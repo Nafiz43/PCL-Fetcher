@@ -1,0 +1,1341 @@
+\textit{\normalsize Prompt for Question  1:}
+\begin{mdframed}[]
+\normalsize
+Your task is to determine whether a **CTA (CT Angiography)** or **intra-operative cone-beam CT with contrast** was explicitly performed.  
+
+If the procedure was explicitly performed, return `1` along with an explanation. Otherwise, return `0` with an explanation.
+
+Follow a structured reasoning approach to do the task:
+
+### **Reasoning Steps**  
+1. **Identify Mentions**: Extract all references to CTA or intra-operative cone-beam CT with contrast in the report.  
+2. **Assess Explicitness**: Determine if the report explicitly states that the procedure **was performed** (e.g., 'CTA was conducted,' 'A cone-beam CT with contrast was completed').  
+3. **Resolve Ambiguities**: If the procedure is only **suggested, planned, considered, or recommended**, but there is no explicit confirmation that it was performed, classify it as **not performed**.  
+4. **Handle Uncertainty**: If the report lacks a direct mention of the procedure, assume it was **not performed**.  
+5. **Generate JSON Output**: Construct a response in strict JSON format, adhering to the following structure:  
+\end{mdframed}
+
+\textit{\normalsize Prompt for Question  2:}
+\begin{mdframed}[]
+\normalsize
+
+Your task is to determine whether an **MRA (MR Angiography)** was explicitly performed. 
+
+If the procedure was explicitly performed, return `1` along with an explanation. Otherwise, return `0` with an explanation.
+
+Follow a structured reasoning approach to do the task:
+
+### **Reasoning Steps**  
+1. **Identify Mentions**: Extract all references to MRA (MR Angiography) in the report.  
+2. **Assess Explicitness**: Determine if the report explicitly states that the procedure **was performed** (e.g., 'MRA was conducted,' 'MR Angiography was completed').  
+3. **Resolve Ambiguities**: If the procedure is only **suggested, planned, considered, or recommended**, but there is no explicit confirmation that it was performed, classify it as **not performed**.  
+4. **Handle Uncertainty**: If the report lacks a direct mention of MRA, assume it was **not performed**.  
+5. **Generate JSON Output**: Construct a response in strict JSON format, adhering to the following structure:  
+\end{mdframed}
+
+\textit{\normalsize Prompt for Question  3:}
+\begin{mdframed}[]
+\normalsize
+
+Your task is to determine whether a **noninvasive vascular lab study** was explicitly performed. Examples include **duplex ultrasound, color flow study, or Pulse Volume Recording (PVR)**. 
+
+If the procedure was explicitly performed, return `1` along with an explanation. Otherwise, return `0` with an explanation.
+
+Follow a structured reasoning approach to do the task:
+
+### **Reasoning Steps**  
+1. **Identify Mentions**: Extract all references to **duplex ultrasound, color flow study, Pulse Volume Recording (PVR), or any other noninvasive vascular lab study** in the report.  
+2. **Assess Explicitness**: Determine if the report clearly states that the procedure **was performed** (e.g., 'A duplex ultrasound was conducted,' 'PVR testing was completed').  
+3. **Resolve Ambiguities**: If the procedure is only **suggested, planned, considered, or recommended** but not explicitly confirmed as performed, classify it as **not performed**.  
+4. **Handle Uncertainty**: If the report lacks a direct mention of a noninvasive vascular lab study, assume it **was not performed**.  
+5. **Generate JSON Output**: Construct a response in strict JSON format, adhering to the following structure:  
+
+\end{mdframed}
+
+\textit{\normalsize Prompt for Question  4:}
+\begin{mdframed}[]
+\normalsize
+
+Your task is to determine whether a **cardiac imaging study** was explicitly performed. Examples include a **CT coronary angiogram** or **nuclear medicine cardiac stress test**. 
+
+If the procedure was explicitly performed, return `1` along with an explanation. Otherwise, return `0` with an explanation.
+
+Follow a structured reasoning approach to do the task:
+
+### **Reasoning Steps**  
+1. **Identify Mentions**: Extract all references to **CT coronary angiogram, nuclear medicine cardiac stress test, or any other cardiac imaging study** in the report.  
+2. **Assess Explicitness**: Determine if the report clearly states that the procedure **was performed** (e.g., 'A CT coronary angiogram was conducted,' 'A nuclear medicine cardiac stress test was completed').  
+3. **Resolve Ambiguities**: If the procedure is only **suggested, planned, considered, or recommended** but not explicitly confirmed as performed, classify it as **not performed**.  
+4. **Handle Uncertainty**: If the report lacks a direct mention of a cardiac imaging study, assume it **was not performed**.  
+5. **Generate JSON Output**: Construct a response in strict JSON format, adhering to the following structure:  
+\end{mdframed}
+
+\textit{\normalsize Prompt for Question  5:}
+\begin{mdframed}[]
+\normalsize
+
+Your task is to determine whether a **dedicated arteriography** was explicitly performed. **Arteriography** is defined as imaging of arteries using **fluoroscopy and contrast** specifically to evaluate arterial anatomy or pathology. The contrast **must be administered directly into an artery**. **Venography does not count as arteriography.** 
+
+If the procedure was explicitly performed, return `1` along with an explanation. Otherwise, return `0` with an explanation.
+
+Follow a structured reasoning approach to do the task:
+
+### **Reasoning Steps**  
+1. **Identify Mentions**: Extract all references to **arteriography** in the report. Look for terms like **arteriogram, fluoroscopic arterial imaging, or direct intra-arterial contrast administration**.  
+2. **Confirm Modality & Contrast Administration**: Ensure the report specifies that the imaging was performed **using fluoroscopy and contrast**. The contrast **must** be administered **into an artery** to qualify as arteriography.  
+3. **Differentiate from Venography**: If the procedure involves **venous imaging** (e.g., venography or venogram), **do not classify it as arteriography**.  
+4. **Resolve Ambiguities**: If the procedure is only **suggested, planned, considered, or recommended** but not explicitly confirmed as performed, classify it as **not performed**.  
+5. **Handle Uncertainty**: If the report lacks a direct mention of **arteriography with intra-arterial contrast administration**, assume it **was not performed**.  
+6. **Generate JSON Output**: Construct a response in strict JSON format, adhering to the following structure:  
+\end{mdframed}
+
+\textit{\normalsize Prompt for Question  6:}
+\begin{mdframed}[]
+\normalsize
+
+Your task is to determine whether a **dedicated venography** was explicitly performed. **Venography** is defined as imaging of veins using **fluoroscopy and contrast** specifically to evaluate **venous anatomy or pathology**. The contrast **must be administered directly into a vein**. **Arteriography does not count as venography.** 
+
+If the procedure was explicitly performed, return `1` along with an explanation. Otherwise, return `0` with an explanation.
+
+Follow a structured reasoning approach to do the task:
+
+### **Reasoning Steps**  
+1. **Identify Mentions**: Extract all references to **venography** in the report. Look for terms like **venogram, fluoroscopic venous imaging, or direct intra-venous contrast administration**.  
+2. **Confirm Modality & Contrast Administration**: Ensure the report specifies that the imaging was performed **using fluoroscopy and contrast**. The contrast **must** be administered **into a vein** to qualify as venography.  
+3. **Differentiate from Arteriography**: If the procedure involves **arterial imaging** (e.g., arteriography or arteriogram), **do not classify it as venography**.  
+4. **Resolve Ambiguities**: If the procedure is only **suggested, planned, considered, or recommended** but not explicitly confirmed as performed, classify it as **not performed**.  
+5. **Handle Uncertainty**: If the report lacks a direct mention of a **venography with intra-venous contrast administration**, assume it **was not performed**.  
+6. **Generate JSON Output**: Construct a response in strict JSON format, adhering to the following structure:  
+\end{mdframed}
+
+\textit{\normalsize Prompt for Question  7:}
+\begin{mdframed}[]
+\normalsize
+
+Your task is to determine whether a **dialysis access evaluation** was explicitly performed. These evaluations include:  
+- **Ultrasound studies** (e.g., Doppler ultrasound of dialysis access).  
+- **Fistulagrams** (fluoroscopic imaging of a dialysis fistula using contrast).  
+- **Graft evaluations** (imaging studies assessing the function and patency of dialysis grafts).  
+
+If the procedure was explicitly performed, return `1` along with an explanation. Otherwise, return `0` with an explanation.
+
+Follow a structured reasoning approach to do the task:
+
+### **Reasoning Steps**  
+1. **Identify Mentions**: Extract all references to **dialysis access evaluation** in the report. Look for terms such as **dialysis access ultrasound, fistulagram, or graft evaluation**.  
+2. **Confirm the Type of Study**: Ensure that the report explicitly states that one of the following procedures was performed:  
+   - **Ultrasound study** for dialysis access.  
+   - **Fistulagram** (contrast-based evaluation of a fistula).  
+   - **Graft evaluation** (assessment of a dialysis graft using imaging).  
+3. **Resolve Ambiguities**: If the procedure is only **suggested, planned, considered, or recommended** but not explicitly confirmed as performed, classify it as **not performed**.  
+4. **Handle Uncertainty**: If the report lacks a direct mention of any of the qualifying dialysis access studies, assume it **was not performed**.  
+5. **Generate JSON Output**: Construct a response in strict JSON format, adhering to the following structure:  
+
+\end{mdframed}
+
+\textit{\normalsize Prompt for Question  8:}
+\begin{mdframed}[]
+\normalsize
+
+Your task is to determine whether **carotid artery imaging** was explicitly performed. This includes imaging studies specifically evaluating the carotid arteries, such as:  
+- **Carotid ultrasound (Doppler or duplex ultrasound of the carotid arteries)**  
+- **Carotid CT angiography (CTA)**  
+- **Carotid MR angiography (MRA)**  
+- **Carotid angiography (fluoroscopy with contrast administered into the carotid arteries)**  
+
+If the procedure was explicitly performed, return `1` along with an explanation. Otherwise, return `0` with an explanation.
+
+Follow a structured reasoning approach to do the task:
+
+### **Reasoning Steps**  
+1. **Identify Mentions**: Extract all references to **carotid artery imaging** in the report. Look for terms such as **carotid ultrasound, carotid Doppler, carotid CTA, carotid MRA, or carotid angiogram**.  
+2. **Confirm the Imaging Modality**: Ensure that the report explicitly states that one of the following procedures was performed:  
+   - **Ultrasound study** (e.g., Doppler or duplex of the carotid arteries).  
+   - **CT angiography (CTA)** of the carotid arteries.  
+   - **MR angiography (MRA)** of the carotid arteries.  
+   - **Catheter-based carotid angiography** (contrast-enhanced fluoroscopic evaluation).  
+3. **Resolve Ambiguities**: If the procedure is only **suggested, planned, considered, or recommended** but not explicitly confirmed as performed, classify it as **not performed**.  
+4. **Handle Uncertainty**: If the report lacks a direct mention of any carotid artery imaging study, assume it **was not performed**.  
+5. **Generate JSON Output**: Construct a response in strict JSON format, adhering to the following structure:  
+
+\end{mdframed}
+
+\textit{\normalsize Prompt for Question  9:}
+\begin{mdframed}[]
+\normalsize
+
+Your task is to determine whether a **central venous catheter (CVC) procedure** was explicitly performed. This includes:  
+- **Placement** of a central venous catheter, port, or peripherally inserted central catheter (PICC).  
+- **Removal** of a central venous catheter, port, or PICC.  
+- **Revision** or adjustment of an existing central venous catheter, port, or PICC.  
+
+If the procedure was explicitly performed, return `1` along with an explanation. Otherwise, return `0` with an explanation.
+
+Follow a structured reasoning approach to do the task:
+
+### **Reasoning Steps**  
+1. **Identify Mentions**: Extract all references to **central venous catheter procedures** in the report. Look for terms such as **CVC placement, central line insertion, port-a-cath placement, PICC line insertion, catheter revision, or catheter removal**.  
+2. **Confirm Procedure Type**: Ensure that the report explicitly states that one of the following procedures was performed:  
+   - **Placement of a CVC, port, or PICC** (e.g., via ultrasound or fluoroscopic guidance).  
+   - **Removal of a CVC, port, or PICC** (e.g., catheter extraction or explantation).  
+   - **Revision or adjustment** of an existing CVC, port, or PICC.  
+3. **Resolve Ambiguities**: If the procedure is only **suggested, planned, considered, or recommended** but not explicitly confirmed as performed, classify it as **not performed**.  
+4. **Handle Uncertainty**: If the report lacks a direct mention of any **CVC-related procedure**, assume it **was not performed**.  
+5. **Generate JSON Output**: Construct a response in strict JSON format, adhering to the following structure:  
+\end{mdframed}
+
+\textit{\normalsize Prompt for Question  10:}
+\begin{mdframed}[]
+\normalsize
+
+Your task is to determine whether an **Inferior Vena Cava (IVC) filter placement or removal procedure** was explicitly performed. This includes:  
+- **Placement** of an IVC filter (implantation of a filter within the inferior vena cava to prevent embolism).  
+- **Removal** or **retrieval** of an IVC filter (extraction of a previously placed filter).  
+
+If the procedure was explicitly performed, return `1` along with an explanation. Otherwise, return `0` with an explanation.
+
+Follow a structured reasoning approach to do the task:
+
+### **Reasoning Steps**  
+1. **Identify Mentions**: Extract all references to **IVC filter procedures** in the report. Look for terms such as **IVC filter placement, IVC filter removal, IVC filter retrieval, or caval filter implantation**.  
+2. **Confirm Procedure Type**: Ensure that the report explicitly states that one of the following procedures was performed:  
+   - **Placement of an IVC filter** (e.g., via catheter-based insertion in the inferior vena cava).  
+   - **Removal or retrieval of an existing IVC filter** (e.g., endovascular retrieval of the device).  
+3. **Resolve Ambiguities**: If the procedure is only **suggested, planned, considered, or recommended** but not explicitly confirmed as performed, classify it as **not performed**.  
+4. **Handle Uncertainty**: If the report lacks a direct mention of any **IVC filter placement or removal**, assume it **was not performed**.  
+5. **Generate JSON Output**: Construct a response in strict JSON format, adhering to the following structure:  
+
+\end{mdframed}
+
+\textit{\normalsize Prompt for Question  11:}
+\begin{mdframed}[]
+\normalsize
+
+Your task is to determine whether a **venous ablation procedure** was explicitly performed. Venous ablations are performed primarily to treat **varicose veins** and involve techniques such as:  
+- **Endovenous laser ablation (EVLA)**  
+- **Radiofrequency ablation (RFA)**  
+- **Chemical sclerotherapy (foam or liquid injection for vein closure)**  
+- **Mechanochemical ablation (MOCA, ClariVein, etc.)**  
+
+If the procedure was explicitly performed, return `1` along with an explanation. Otherwise, return `0` with an explanation.
+
+Follow a structured reasoning approach to do the task:
+
+### **Reasoning Steps**  
+1. **Identify Mentions**: Extract all references to **venous ablation procedures** in the report. Look for terms such as **venous ablation, endovenous laser ablation (EVLA), radiofrequency ablation (RFA), sclerotherapy, or mechanochemical ablation**.  
+2. **Confirm the Procedure Type**: Ensure that the report explicitly states that one of the following procedures was performed:  
+   - **Endovenous thermal ablation (laser or radiofrequency-based techniques).**  
+   - **Sclerotherapy (chemical injection for vein closure).**  
+   - **Mechanochemical ablation (combining mechanical and chemical vein closure techniques).**  
+3. **Resolve Ambiguities**: If the procedure is only **suggested, planned, considered, or recommended** but not explicitly confirmed as performed, classify it as **not performed**.  
+4. **Handle Uncertainty**: If the report lacks a direct mention of any **venous ablation procedure**, assume it **was not performed**.  
+5. **Generate JSON Output**: Construct a response in strict JSON format, adhering to the following structure:  
+
+\end{mdframed}
+
+\textit{\normalsize Prompt for Question  12:}
+\begin{mdframed}[]
+\normalsize
+
+Your task is to determine whether a **dialysis access intervention** was explicitly performed. These interventions are specific to **arteriovenous (AV) access** and include:  
+- **Fistulagrams** (angiographic evaluation of an AV fistula).  
+- **Graft evaluations** (imaging or interventional assessment of AV grafts).  
+- **Declot procedures** (thrombectomy or thrombolysis specifically performed on AV access).  
+
+If the procedure was explicitly performed, return `1` along with an explanation. Otherwise, return `0` with an explanation.
+
+Follow a structured reasoning approach to do the task:
+
+### **Reasoning Steps**  
+1. **Identify Mentions**: Extract all references to **dialysis access interventions** in the report. Look for terms such as **fistulagram, AV fistula angiography, AV graft evaluation, thrombectomy, thrombolysis, or declot procedure on an AV access**.  
+2. **Confirm the Procedure Type**: Ensure that the report explicitly states that one of the following procedures was performed **on an arteriovenous access**:  
+   - **Fistulagram** (AV fistula imaging and assessment).  
+   - **Graft evaluation** (assessment of an AV graft for function or complications).  
+   - **Declot procedure** (thrombectomy or thrombolysis **specifically on an AV access**).  
+3. **Resolve Ambiguities**: If the procedure is only **suggested, planned, considered, or recommended** but not explicitly confirmed as performed, classify it as **not performed**.  
+4. **Exclude Non-Relevant Procedures**: Ensure that procedures **not related to arteriovenous access** (such as central venous catheter interventions) **are not mistakenly classified as dialysis access interventions**.  
+5. **Handle Uncertainty**: If the report lacks a direct mention any **dialysis access intervention**, assume it **was not performed**.  
+6. **Generate JSON Output**: Construct a response in strict JSON format, adhering to the following structure:  
+
+\end{mdframed}
+
+\textit{\normalsize Prompt for Question  13:}
+\begin{mdframed}[]
+\normalsize
+
+Your task is to determine whether **any intervention involving a portosystemic shunt** was explicitly performed. These interventions include:  
+- **Shunt placement** (creation of a new portosystemic shunt).  
+- **Shunt evaluation** (imaging or assessment of an existing shunt for patency or function).  
+- **Shunt revision** (modification, balloon angioplasty, or stenting of a pre-existing shunt).  
+
+The **portosystemic shunts** of interest include:  
+- **Transjugular Intrahepatic Portosystemic Shunt (TIPS)**  
+- **Direct Intrahepatic Portocaval Shunt (DIPS)**  
+- **Transjugular Transcaval Intrahepatic Portosystemic Shunt (TTIPS)**  
+
+If the procedure was explicitly performed, return `1` along with an explanation. Otherwise, return `0` with an explanation.
+
+Follow a structured reasoning approach to do the task:
+
+### **Reasoning Steps**  
+1. **Identify Mentions**: Extract all references to **portosystemic shunt interventions** in the report. Look for terms such as **TIPS, DIPS, TTIPS, transjugular intrahepatic shunt, portocaval shunt, portosystemic shunt placement, shunt revision, or shunt evaluation**.  
+2. **Confirm the Procedure Type**: Ensure that the report explicitly states that one of the following procedures was performed:  
+   - **Shunt Placement** (creation of a new TIPS, DIPS, or TTIPS).  
+   - **Shunt Evaluation** (assessment of an existing shunt’s function, flow, or patency).  
+   - **Shunt Revision** (angioplasty, stenting, or any modification to an existing shunt).  
+3. **Resolve Ambiguities**: If the procedure is only **suggested, planned, considered, or recommended** but not explicitly confirmed as performed, classify it as **not performed**.  
+4. **Exclude Non-Relevant Procedures**: Ensure that unrelated vascular or hepatic interventions (such as portal vein thrombectomy or general liver angiography) **are not mistaken for portosystemic shunt interventions**.  
+5. **Handle Uncertainty**: If the report lacks a direct mention of any **portosystemic shunt intervention**, assume it **was not performed**.  
+6. **Generate JSON Output**: Construct a response in strict JSON format, adhering to the following structure:  
+
+\end{mdframed}
+
+\textit{\normalsize Prompt for Question  14:}
+\begin{mdframed}[]
+\normalsize
+
+Your task is to determine whether **angioplasty or stent placement in the arterial system** was explicitly performed. The **arterial system** includes **any artery in the body**, such as:  
+- **Coronary arteries** (e.g., coronary angioplasty, coronary stenting).  
+- **Carotid arteries** (e.g., carotid artery stenting, carotid angioplasty).  
+- **Peripheral arteries** (e.g., femoral, iliac, popliteal artery interventions).  
+- **Visceral arteries** (e.g., renal, mesenteric artery stenting).  
+- **Aortic branches** (e.g., subclavian, vertebral artery stenting).  
+
+If the procedure was explicitly performed, return `1` along with an explanation. Otherwise, return `0` with an explanation.
+
+Follow a structured reasoning approach to do the task:
+
+### **Reasoning Steps**  
+1. **Identify Mentions**: Extract all references to **angioplasty or stent placement** within the **arterial system** from the report. Look for terms such as **angioplasty, percutaneous transluminal angioplasty (PTA), arterial stenting, vascular stenting, endovascular stent placement, or balloon dilation of an artery**.  
+2. **Confirm the Procedure Type**: Ensure that the report explicitly states that one of the following procedures was performed:  
+   - **Angioplasty** (balloon dilation of an arterial stenosis).  
+   - **Stent Placement** (implantation of a stent within an artery).  
+3. **Resolve Ambiguities**: If the procedure is only **suggested, planned, considered, or recommended** but not explicitly confirmed as performed, classify it as **not performed**.  
+4. **Exclude Non-Relevant Procedures**: Ensure that interventions performed **in the venous system** (such as venous angioplasty or venous stenting) **are not mistaken for arterial interventions**.  
+5. **Handle Uncertainty**: If the report lacks a direct mention of any **arterial angioplasty or stent placement**, assume it **was not performed**.  
+6. **Generate JSON Output**: Construct a response in strict JSON format, adhering to the following structure:  
+
+\end{mdframed}
+
+\textit{\normalsize Prompt for Question  15:}
+\begin{mdframed}[]
+\normalsize
+
+Your task is to determine whether **angioplasty or stent placement in the venous system** was explicitly performed. The **venous system** includes **any vein in the body**, such as:  
+- **Central veins** (e.g., superior vena cava (SVC), inferior vena cava (IVC), subclavian, brachiocephalic veins).  
+- **Peripheral veins** (e.g., iliac, femoral, popliteal, upper extremity veins).  
+- **Portal or hepatic veins** (e.g., hepatic vein stenting, portal vein angioplasty).  
+- **Pelvic veins** (e.g., gonadal, ovarian, or internal iliac vein interventions).  
+
+If the procedure was explicitly performed, return `1` along with an explanation. Otherwise, return `0` with an explanation.
+
+Follow a structured reasoning approach to do the task:
+
+### **Reasoning Steps**  
+1. **Identify Mentions**: Extract all references to **venous angioplasty or venous stent placement** from the report. Look for terms such as **venous angioplasty, balloon venoplasty, venous stenting, endovenous stent placement, mechanical luminal disruption, or vein dilation with a balloon**.  
+2. **Confirm the Procedure Type**: Ensure that the report explicitly states that one of the following procedures was performed:  
+   - **Venous Angioplasty** (balloon inflation to open a vein or disrupt an obstruction).  
+   - **Venous Stent Placement** (implantation of a stent within a vein).  
+3. **Resolve Ambiguities**: If the procedure is only **suggested, planned, considered, or recommended** but not explicitly confirmed as performed, classify it as **not performed**.  
+4. **Exclude Non-Relevant Procedures**: Ensure that interventions performed **in the arterial system** (such as arterial angioplasty or arterial stenting) **are not mistakenly classified as venous interventions**.  
+5. **Handle Uncertainty**: If the report lacks direct mention of any **venous angioplasty or stent placement**, assume it **was not performed**.  
+6. **Generate JSON Output**: Construct a response in strict JSON format, adhering to the following structure:  
+
+\end{mdframed}
+
+\textit{\normalsize Prompt for Question  16:}
+\begin{mdframed}[]
+\normalsize
+
+Your task is to determine whether **stent placement in the carotid artery** was explicitly performed. The carotid arteries include:  
+- **Common carotid artery (CCA)**  
+- **Internal carotid artery (ICA)**  
+- **External carotid artery (ECA)**  
+
+If the procedure was explicitly performed, return `1` along with an explanation. Otherwise, return `0` with an explanation.
+
+Follow a structured reasoning approach to do the task:
+
+### **Reasoning Steps**  
+1. **Identify Mentions**: Extract all references to **stent placement in the carotid artery** from the report. Look for terms such as **carotid stenting, carotid artery stent placement, endovascular stenting of the carotid, carotid angioplasty with stenting, or CAS (Carotid Artery Stenting)**.  
+2. **Confirm the Procedure Type**: Ensure that the report explicitly states that **a stent was placed in the carotid artery**.  
+3. **Resolve Ambiguities**: If the procedure is only **suggested, planned, considered, or recommended** but not explicitly confirmed as performed, classify it as **not performed**.  
+4. **Exclude Non-Relevant Procedures**: Ensure that other **carotid interventions (such as carotid angiography, balloon angioplasty without stent placement, or diagnostic imaging)** are **not mistaken for carotid stenting**.  
+5. **Handle Uncertainty**: If the report lacks a direct mention of **carotid artery stent placement**, assume it **was not performed**.  
+6. **Generate JSON Output**: Construct a response in strict JSON format, adhering to the following structure:  
+
+\end{mdframed}
+
+\textit{\normalsize Prompt for Question  17:}
+\begin{mdframed}[]
+\normalsize
+
+Your task is to determine whether **thrombolytic therapy or thrombectomy** was explicitly performed. These interventions include:  
+
+#### **Thrombolytic Therapy** (Clot-Dissolving Medication)  
+- **Systemic or catheter-directed administration** of thrombolytic agents.  
+- **Common drugs:**  
+  - **tPA (tissue plasminogen activator)**  
+  - **Tenecteplase**  
+  - **Alteplase**  
+
+#### **Thrombectomy** (Clot Removal Procedures)  
+- **Mechanical thrombectomy** – Direct clot removal using specialized devices (e.g., aspiration catheters, stent retrievers).  
+- **Balloon thrombectomy** – Clot extraction using a balloon catheter.  
+- **Pharmacomechanical thrombectomy** – Combination of thrombolytic drugs with mechanical clot disruption.  
+
+If the procedure was explicitly performed, return `1` along with an explanation. Otherwise, return `0` with an explanation.
+
+Follow a structured reasoning approach to do the task:
+
+### **Reasoning Steps**  
+1. **Identify Mentions**: Extract all references to **thrombolytic therapy or thrombectomy** from the report. Look for terms such as **tPA administration, thrombolysis, lytic therapy, alteplase, tenecteplase, mechanical thrombectomy, aspiration thrombectomy, balloon thrombectomy, or pharmacomechanical thrombectomy**.  
+2. **Confirm the Procedure Type**: Ensure that the report explicitly states that **one of the following was performed**:  
+   - **Thrombolytic therapy** (administration of clot-dissolving drugs).  
+   - **Thrombectomy** (mechanical or pharmacomechanical clot removal).  
+3. **Resolve Ambiguities**: If the procedure is only **suggested, planned, considered, or recommended** but not explicitly confirmed as performed, classify it as **not performed**.  
+4. **Exclude Non-Relevant Procedures**: Ensure that other **vascular interventions (such as angioplasty or stenting)** are **not mistaken for thrombolytic therapy or thrombectomy**.  
+5. **Handle Uncertainty**: If the report lacks a direct mention of **thrombolytic therapy or thrombectomy**, assume it **was not performed**.  
+6. **Generate JSON Output**: Construct a response in strict JSON format, adhering to the following structure:  
+
+\end{mdframed}
+
+\textit{\normalsize Prompt for Question  18:}
+\begin{mdframed}[]
+\normalsize
+
+Your task is to determine whether **aortic endograft placement or revision** was explicitly performed. This includes procedures related to:  
+
+- **Endovascular Aneurysm Repair (EVAR)** – Placement of an endograft to treat an abdominal aortic aneurysm (AAA).  
+- **Thoracic Endovascular Aortic Repair (TEVAR)** – Endograft placement in the thoracic aorta.  
+- **Fenestrated Endovascular Aortic Repair (FEVAR)** – Endograft placement with fenestrations for branch vessels.  
+- **Endograft Revision** – Any modification, extension, or repair of a previously placed aortic endograft.  
+
+If the procedure was explicitly performed, return `1` along with an explanation. Otherwise, return `0` with an explanation.
+
+Follow a structured reasoning approach to do the task:
+
+### **Reasoning Steps**  
+1. **Identify Mentions**: Extract all references to **aortic endograft placement or revision** from the report. Look for terms such as **EVAR, TEVAR, FEVAR, aortic stent graft placement, aortic endograft deployment, endovascular aortic repair, endograft revision, or endograft extension**.  
+2. **Confirm the Procedure Type**: Ensure that the report explicitly states that **one of the following was performed**:  
+   - **Aortic endograft placement** (initial deployment of an aortic stent graft).  
+   - **Aortic endograft revision** (modification or extension of a prior graft).  
+3. **Resolve Ambiguities**: If the procedure is only **suggested, planned, considered, or recommended** but not explicitly confirmed as performed, classify it as **not performed**.  
+4. **Exclude Non-Relevant Procedures**: Ensure that other **vascular interventions (such as aortic angiography, open surgical repair, or stenting of non-aortic vessels)** are **not mistaken for aortic endograft placement or revision**.  
+5. **Handle Uncertainty**: If the report lacks a direct mention of **aortic endograft placement or revision**, assume it **was not performed**.  
+6. **Generate JSON Output**: Construct a response in strict JSON format, adhering to the following structure:  
+
+\end{mdframed}
+
+\textit{\normalsize Prompt for Question  19:}
+\begin{mdframed}[]
+\normalsize
+
+Your task is to determine whether **an emergency embolization** was explicitly performed. Emergency embolization is defined as the **intravascular administration of an occlusive material to stop or control active bleeding or hemorrhage**.  
+
+#### **Common Indications for Emergency Embolization**  
+- **Trauma-related bleeding** (e.g., liver, spleen, kidney, or pelvic trauma).  
+- **Gastrointestinal (GI) bleeding** (e.g., gastric, duodenal, or colonic bleeding).  
+- **Hemoptysis** (severe lung bleeding).  
+- **Iatrogenic bleeding** (bleeding caused by medical procedures).  
+- **Tumor-related hemorrhage** (e.g., bleeding from hypervascular tumors).  
+
+#### **Common Embolization Materials**  
+- **Gelfoam** (temporary occlusion).  
+- **Onyx** (liquid embolic agent).  
+- **Beads or microparticles** (used for tumor or GI bleeding control).  
+- **Coils and plugs** (mechanical occlusion devices).  
+
+If the procedure was explicitly performed, return `1` along with an explanation. Otherwise, return `0` with an explanation.
+
+Follow a structured reasoning approach to do the task:
+
+### **Reasoning Steps**  
+1. **Identify Mentions**: Extract all references to **emergency embolization** in the report. Look for terms such as **embolization, endovascular embolization, vascular occlusion, coil embolization, Onyx injection, Gelfoam, particle embolization, or hemorrhage control procedure**.  
+2. **Confirm the Procedure Type**: Ensure that the report explicitly states that an **embolization procedure** was performed **for emergency bleeding control** rather than elective or prophylactic purposes.  
+3. **Determine the Indication**: Verify that the embolization was performed for **active bleeding, trauma, GI hemorrhage, hemoptysis, iatrogenic causes, or tumor-related bleeding** rather than for **tumor devascularization, arteriovenous malformation (AVM) treatment, or preoperative embolization**.  
+4. **Resolve Ambiguities**: If the report mentions **embolization was considered, planned, or recommended** but does not confirm that it was **performed**, classify it as **not performed**.  
+5. **Exclude Non-Relevant Procedures**: Ensure that **angiography, stent placement, thrombectomy, or other vascular interventions** are **not mistaken for emergency embolization**.  
+6. **Handle Uncertainty**: If the report lacks a direct mention of **emergency embolization**, assume it **was not performed**.  
+7. **Generate JSON Output**: Construct a response in strict JSON format, adhering to the following structure:  
+
+\end{mdframed}
+
+\textit{\normalsize Prompt for Question  20:}
+\begin{mdframed}[]
+\normalsize
+
+Your task is to determine whether **an elective embolization** was explicitly performed. Elective embolization is defined as the **intravascular administration of an occlusive material to stop or reduce blood flow for non-emergency therapeutic purposes** or for the **administration of medication**.  
+
+#### **Types of Elective Embolization Procedures**  
+- **Uterine Artery Embolization (UAE)** – Used to treat uterine fibroids.  
+- **Uterine Fibroid Embolization (UFE)** – Specific type of UAE for fibroid treatment.  
+- **Arteriovenous Malformation (AVM) Embolization** – Used to block abnormal blood vessel connections.  
+- **Varicocele Embolization** – Treats enlarged veins in the scrotum.  
+- **Gonadal Vein Embolization** – Treats venous insufficiency in reproductive organs.  
+- **Protective Embolization** – Performed before procedures to prevent complications.  
+
+#### **Exclusion Criteria**  
+- **Transarterial Chemoembolization (TACE) and Transarterial Radioembolization (TARE)** should **not** be considered **elective embolization** **unless protective embolization** was performed.  
+- **Emergency embolization for active bleeding or trauma** is **not elective** and should be excluded.  
+
+If the procedure was explicitly performed, return `1` along with an explanation. Otherwise, return `0` with an explanation.
+
+Follow a structured reasoning approach to do the task:
+
+### **Reasoning Steps**  
+1. **Identify Mentions**: Extract all references to **elective embolization** from the report. Look for terms such as **uterine artery embolization, fibroid embolization, AVM embolization, varicocele embolization, gonadal vein embolization, protective embolization, or planned vascular occlusion**.  
+2. **Confirm the Procedure Type**: Ensure that the embolization was performed **for elective (non-emergency) indications**, such as **fibroids, AVMs, or varicoceles**, rather than for **acute hemorrhage control**.  
+3. **Differentiate from Non-Elective Procedures**:  
+   - **Exclude emergency embolization** for trauma, GI bleeding, hemoptysis, or tumor-related hemorrhage.  
+   - **Exclude TACE or TARE unless protective embolization was explicitly mentioned.**  
+4. **Resolve Ambiguities**: If the report mentions **embolization was considered, planned, or recommended** but does not confirm that it was **performed**, classify it as **not performed**.  
+5. **Exclude Non-Relevant Procedures**: Ensure that **angiography, venous sclerotherapy, or other vascular interventions** are **not mistaken for elective embolization**.  
+6. **Handle Uncertainty**: If the report lacks a direct mention of **elective embolization**, assume it **was not performed**.  
+7. **Generate JSON Output**: Construct a response in strict JSON format, adhering to the following structure:  
+
+\end{mdframed}
+
+\textit{\normalsize Prompt for Question  21:}
+\begin{mdframed}[]
+\normalsize
+
+Your task is to determine whether **a transarterial chemoembolization (TACE) procedure** was explicitly performed. **TACE is defined as the intravascular administration of a chemotherapy agent to treat a tumor.**  
+
+#### **Key Criteria for TACE**  
+- **Must involve intra-arterial chemotherapy delivery** (e.g., doxorubicin, cisplatin, mitomycin C).  
+- **Must involve arterial embolization** to reduce tumor blood supply.  
+- **Indications typically include hepatocellular carcinoma (HCC) or metastatic liver tumors.**  
+
+#### **Exclusion Criteria**  
+- **Transarterial Radioembolization (TARE)** – Uses radioactive microspheres instead of chemotherapy.  
+- **Elective Embolization (e.g., uterine fibroid embolization, AVM embolization)** – Not the same as TACE.  
+- **Emergency Embolization** – Performed for bleeding, not tumor treatment.  
+
+If the procedure was explicitly performed, return `1` along with an explanation. Otherwise, return `0` with an explanation.
+
+Follow a structured reasoning approach to do the task:
+### **Reasoning Steps**  
+1. **Identify Mentions**: Extract all references to **TACE, transarterial chemoembolization, intra-arterial chemotherapy, or embolization for tumor treatment** in the report.  
+2. **Confirm the Procedure Type**: Ensure the report explicitly states that **chemotherapy was administered intra-arterially** and that **embolization was performed as part of the procedure**.  
+3. **Differentiate from Other Procedures**:  
+   - **Exclude TARE** (radioembolization with Y-90 microspheres).  
+   - **Exclude elective embolization for fibroids, AVMs, or varicoceles.**  
+   - **Exclude emergency embolization for trauma or hemorrhage.**  
+4. **Resolve Ambiguities**: If the report mentions **TACE was considered, planned, or recommended** but does not confirm that it was **performed**, classify it as **not performed**.  
+5. **Exclude Non-Relevant Procedures**: Ensure that **biopsy, angiography, or systemic chemotherapy** are **not mistaken for TACE**.  
+6. **Handle Uncertainty**: If the report lacks a direct mention of **TACE**, assume it **was not performed**.  
+7. **Generate JSON Output**: Construct a response in strict JSON format, adhering to the following structure:  
+
+\end{mdframed}
+
+\textit{\normalsize Prompt for Question  22:}
+\begin{mdframed}[]
+\normalsize
+
+Your task is to determine whether **a transarterial radioembolization (TARE) procedure** was explicitly performed. **TARE is defined as the intra-arterial administration of radioactive microspheres, most commonly Yttrium-90 (Y90), to treat tumors.**  
+
+#### **Key Criteria for TARE**  
+- **Must involve intra-arterial administration of radioactive material** (e.g., Yttrium-90 microspheres).  
+- **May include angiographic mapping with or without macroaggregated albumin (MAA) administration** to assess vascular anatomy before Y90 treatment.  
+- **Typically performed for hepatic tumors (e.g., hepatocellular carcinoma, metastatic liver disease).**  
+
+#### **Exclusion Criteria**  
+- **Transarterial Chemoembolization (TACE)** – Uses **chemotherapy agents** instead of radioactive microspheres.  
+- **Elective Embolization (e.g., uterine fibroid embolization, AVM embolization)** – Not the same as TARE.  
+- **Emergency Embolization** – Performed for hemorrhage control, not tumor treatment.  
+
+If the procedure was explicitly performed, return `1` along with an explanation. Otherwise, return `0` with an explanation.
+
+Follow a structured reasoning approach to do the task:
+
+### **Reasoning Steps**  
+1. **Identify Mentions**: Extract all references to **TARE, transarterial radioembolization, Yttrium-90 (Y90) therapy, angiographic mapping, or MAA administration** in the report.  
+2. **Confirm the Procedure Type**: Ensure the report explicitly states that **radioactive microspheres were administered intra-arterially** or that **angiographic mapping for TARE was performed.**  
+3. **Differentiate from Other Procedures**:  
+   - **Exclude TACE** (chemoembolization with doxorubicin, cisplatin, mitomycin C).  
+   - **Exclude elective embolization for AVMs, fibroids, or varicoceles.**  
+   - **Exclude emergency embolization for trauma or bleeding.**  
+4. **Resolve Ambiguities**: If the report mentions **TARE was considered, planned, or recommended** but does not confirm that it was **performed**, classify it as **not performed**.  
+5. **Exclude Non-Relevant Procedures**: Ensure that **angiography alone, hepatic artery catheterization, or systemic radiation therapy** are **not mistaken for TARE**.  
+6. **Handle Uncertainty**: If the report is vague or does not explicitly mention of **TARE**, assume it **was not performed**.  
+7. **Generate JSON Output**: Construct a response in strict JSON format, adhering to the following structure:  
+
+\end{mdframed}
+
+\textit{\normalsize Prompt for Question  23:}
+\begin{mdframed}[]
+\normalsize
+
+Your task is to determine whether an **intravascular procedure was performed** that **does not fit into** any of the following predefined categories:  
+
+- **Venous access procedures** (e.g., port placement, exchange, or removal, central venous catheter procedures, dialysis catheter procedures).  
+- **Dialysis access interventions** (e.g., fistulagrams, graft evaluations, declot procedures for arteriovenous access).  
+- **IVC filter placement or removal**.  
+- **Ablation procedures** (e.g., venous ablation).  
+- **Stent or stent-graft placement** (arterial or venous).  
+- **TIPS, DIPS, or other portosystemic shunt procedures**.  
+- **Embolization procedures** (elective or emergency).  
+- **Transarterial Chemoembolization (TACE)**.  
+- **Transarterial Radioembolization (TARE)**.  
+
+If a procedure **does not fall under any of these categories** and involves **intravascular access**, it qualifies for a **label of `1`**. Examples of qualifying procedures include:  
+- **Transjugular liver or renal biopsy**  
+- **Other intravascular biopsies**  
+- **Fiducial marker placement using an intravascular approach**  
+
+If the procedure was explicitly performed, return `1` along with an explanation. Otherwise, return `0` with an explanation.
+
+Follow a structured reasoning approach to do the task:
+
+### **Reasoning Steps**  
+1. **Identify Any Intravascular Procedure**:  
+   - Look for descriptions of procedures that involve catheter-based access to blood vessels.  
+
+2. **Check for Exclusion Criteria**:  
+   - If the procedure is **already classified** under venous access, dialysis interventions, IVC filters, ablations, stents, TIPS, embolization, TACE, or TARE, **do not count it**.  
+
+3. **Check for Inclusion Criteria**:  
+   - If the procedure is **not one of the excluded categories** but still involves **vascular access**, determine if it falls under examples such as **intravascular biopsy (e.g., transjugular liver biopsy, renal biopsy) or fiducial marker placement**.  
+
+4. **Resolve Ambiguities**:  
+   - If the report states that **a procedure was planned or considered** but does not confirm that it was **performed**, classify it as **not performed**.  
+
+5. **Ensure No Misclassification**:  
+   - Verify that **angiography, diagnostic imaging alone, or systemic procedures** are **not mistakenly included** as intravascular interventions.  
+
+6. **Generate JSON Output**:  
+   - Your response **must** be a **valid JSON object** with the following structure:  
+
+\end{mdframed}
+
+\textit{\normalsize Prompt for Question  24:}
+\begin{mdframed}[]
+\normalsize
+
+Your task is to determine whether a **percutaneous biopsy** was performed.  
+
+- **Percutaneous biopsy** refers to a biopsy procedure where a needle is inserted **through the skin** to obtain a tissue sample from an organ or mass.  
+- **Percutaneous biopsy does NOT include intravascular biopsy procedures** such as:  
+  - **Transjugular liver biopsy**  
+  - **Transjugular renal biopsy**  
+
+If the procedure was explicitly performed, return `1` along with an explanation. Otherwise, return `0` with an explanation.
+
+Follow a structured reasoning approach to do the task:
+
+### **Reasoning Steps**  
+
+1. **Identify Any Biopsy Procedure**:  
+   - Look for key terms indicating a **biopsy** was performed. Common descriptors include:  
+     - 'Fine-needle aspiration (FNA)'  
+     - 'Core needle biopsy (CNB)'  
+     - 'Image-guided biopsy' (e.g., ultrasound-guided, CT-guided)  
+
+2. **Confirm Percutaneous Approach**:  
+   - Ensure the biopsy was performed **through the skin** and not via a **vascular approach**.  
+   - If terms like **'transjugular'**, **'intravascular'**, or **'endovascular'** appear, **do not count it** as percutaneous.  
+
+3. **Resolve Ambiguities**:  
+   - If the report states that a **biopsy was considered or planned** but does not confirm it was **performed**, classify it as **not performed**.  
+
+4. **Ensure No Misclassification**:  
+   - If the procedure involves **resection, excision, or surgical biopsy**, it is **not** a percutaneous biopsy and should be excluded.  
+   - If only **biopsy results** are mentioned but **no procedural details** are given, assume the biopsy is **not documented** in this report.  
+
+5. **Generate JSON Output**:  
+   - Your response **must** be a **valid JSON object** with the following structure:  
+
+\end{mdframed}
+
+\textit{\normalsize Prompt for Question  25:}
+\begin{mdframed}[]
+\normalsize
+
+Your task is to determine whether an **abscess drainage procedure** was performed.  
+
+- **Abscess drainage procedures** include:  
+  - Placement of a drain for an **abscess** or **fluid collection**  
+  - **Drain revision, repositioning, upsizing, or removal**  
+
+- **Exclusions** (Do **not** count the following as abscess drainage):  
+  - **Biliary drains and tubes**  
+  - **Cholecystostomy drains and tubes**  
+  - **Nephrostomy drains and tubes**  
+  - **Nephroureterostomy drains and tubes**  
+  - **Chest drains and tubes**  
+
+If the procedure was explicitly performed, return `1` along with an explanation. Otherwise, return `0` with an explanation.
+
+Follow a structured reasoning approach to do the task:
+
+### **Reasoning Steps**  
+
+1. **Identify Any Drainage Procedure**:  
+   - Look for terms indicating **drain placement, removal, revision, or repositioning** related to an **abscess or fluid collection**.  
+   - Common descriptors include:  
+     - 'Percutaneous abscess drainage'  
+     - 'Fluid collection drainage'  
+     - 'Drain placed for abscess'  
+     - 'Drain repositioning/upsize'  
+
+2. **Confirm That It Is an Abscess Drainage Procedure**:  
+   - Ensure the **drainage target** is an **abscess or fluid collection**, not an excluded category.  
+   - If the report specifies a **biliary, cholecystostomy, nephrostomy, nephroureterostomy, or chest drain**, **do not count it** as abscess drainage.  
+
+3. **Resolve Ambiguities**:  
+   - If the report states that **drainage was planned or considered** but does **not confirm it was performed**, classify it as **not performed**.  
+   - If **only fluid aspiration is performed without drain placement**, it should **not** be classified as a drainage procedure.  
+
+4. **Ensure No Misclassification**:  
+   - **Exclude surgical drainage procedures** if they were performed in an **operating room** instead of radiologically guided drainage.  
+   - If the **report only mentions drain presence** without confirming **drain placement, revision, or removal**, assume it is **not documented** in this report.  
+
+5. **Generate JSON Output**:  
+   - Your response **must** be a **valid JSON object** with the following structure:  
+
+\end{mdframed}
+
+\textit{\normalsize Prompt for Question  26:}
+\begin{mdframed}[]
+\normalsize
+
+Your task is to determine whether a **paracentesis or thoracentesis** procedure was performed.  
+
+- **Definitions**:  
+  - **Paracentesis**: A procedure involving **needle drainage of peritoneal fluid (ascites)** from the **abdomen**.  
+  - **Thoracentesis**: A procedure involving **needle drainage of pleural fluid (effusion)** from the **chest (pleural cavity)**.  
+
+If the procedure was explicitly performed, return `1` along with an explanation. Otherwise, return `0` with an explanation.
+
+Follow a structured reasoning approach to do the task:
+
+### **Reasoning Steps**  
+
+1. **Identify Any Drainage Procedure**:  
+   - Look for terms indicating **fluid drainage** from the **abdomen (paracentesis)** or **pleural space (thoracentesis)**.  
+   - Common descriptors include:  
+     - 'Paracentesis performed'  
+     - 'Thoracentesis completed'  
+     - 'Fluid removed from the peritoneal cavity'  
+     - 'Pleural effusion drained under ultrasound guidance'  
+
+2. **Confirm That It Matches the Definition**:  
+   - Ensure the report **explicitly states** that **paracentesis or thoracentesis was performed**.  
+   - If the procedure is **planned or considered but not confirmed as performed**, classify it as **not performed**.  
+
+3. **Exclude Unrelated Drainage Procedures**:  
+   - **Do not classify as paracentesis/thoracentesis** if:  
+     - **Fluid aspiration was performed without drainage**.  
+     - The report describes **abscess drainage, biliary drainage, or nephrostomy**, which are **not** paracentesis/thoracentesis.  
+     - A **chest tube** was placed instead of thoracentesis.  
+
+4. **Resolve Ambiguities**:  
+   - If the report **only mentions the presence of fluid (ascites or pleural effusion)** but does not confirm a **drainage procedure**, classify as **not documented**.  
+   - If the **procedure attempt failed and no fluid was drained**, classify as **not performed**.  
+
+5. **Generate JSON Output**:  
+   - Your response **must** be a **valid JSON object** with the following structure:  
+
+\end{mdframed}
+
+\textit{\normalsize Prompt for Question  27:}
+\begin{mdframed}[]
+\normalsize
+
+Your task is to determine whether a **chest tube placement** procedure was performed.  
+
+- **Definition**:  
+  - **Chest tube placement** refers to the insertion of a tube into the **pleural space** to drain **air (pneumothorax), fluid (pleural effusion), blood (hemothorax), pus (empyema), or chyle (chylothorax)**.  
+  - This is distinct from **thoracentesis**, which involves a needle aspiration without an indwelling tube.  
+
+If the procedure was explicitly performed, return `1` along with an explanation. Otherwise, return `0` with an explanation.
+
+Follow a structured reasoning approach to do the task:
+
+### **Reasoning Steps**  
+
+1. **Identify Any Tube Placement Procedure**:  
+   - Look for terms indicating a **chest tube was inserted**.  
+   - Common descriptors include:  
+     - 'Chest tube placed'  
+     - 'Thoracostomy tube inserted'  
+     - 'Pleural drain inserted'  
+     - 'Intercostal drain placement'  
+
+2. **Confirm That It Matches the Definition**:  
+   - Ensure that the **tube was actually placed into the pleural space**.  
+   - **Exclude** procedures that only describe **thoracentesis (needle drainage without a tube)**.  
+
+3. **Resolve Ambiguities**:  
+   - If the report states that **a chest tube was planned or considered** but does **not confirm it was performed**, classify it as **not performed**.  
+   - If the **report only mentions the presence of a chest tube** but does not confirm **placement in this report**, assume it is **not documented** in this instance.  
+
+4. **Ensure No Misclassification**:  
+   - **Do not classify as chest tube placement if:**  
+     - The procedure was an **aspiration-only thoracentesis** without a tube.  
+     - The report describes **pleural catheter placement**, which is distinct from a chest tube.  
+     - The tube was placed **outside the pleural cavity**, such as an abdominal or mediastinal drain.  
+
+5. **Generate JSON Output**:  
+   - Your response **must** be a **valid JSON object** with the following structure:  
+
+\end{mdframed}
+
+\textit{\normalsize Prompt for Question  28:}
+\begin{mdframed}[]
+\normalsize
+
+Your task is to determine whether a **pleurodesis procedure** was performed.  
+
+- **Definition**:  
+  - **Pleurodesis** is a medical procedure that **induces adhesion between the pleural layers** to prevent the recurrence of pleural effusion or pneumothorax.  
+  - This is typically achieved by **introducing a chemical agent (e.g., talc, doxycycline, or bleomycin) or mechanical abrasion into the pleural space**.  
+
+If the procedure was explicitly performed, return `1` along with an explanation. Otherwise, return `0` with an explanation.
+
+Follow a structured reasoning approach to do the task:
+### **Reasoning Steps**  
+
+1. **Identify Any Mention of Pleurodesis**:  
+   - Look for terms indicating **pleurodesis was performed**.  
+   - Common descriptors include:  
+     - 'Chemical pleurodesis with talc/doxycycline performed'  
+     - 'Mechanical pleurodesis via abrasion'  
+     - 'Instillation of pleurodesis agent into pleural space'  
+
+2. **Confirm That It Matches the Definition**:  
+   - Ensure that the **procedure was actually carried out**, not just considered or planned.  
+   - Verify that **the agent or mechanical technique used for pleurodesis is explicitly stated**.  
+
+3. **Resolve Ambiguities**:  
+   - If the report states that **pleurodesis was planned or considered** but does **not confirm it was performed**, classify it as **not performed**.  
+   - If the **report only mentions a prior pleurodesis** without confirming that a **new pleurodesis was performed**, assume it is **not documented in this instance**.  
+
+4. **Ensure No Misclassification**:  
+   - **Do not classify as pleurodesis if:**  
+     - The procedure **only describes chest tube placement** without mention of pleurodesis.  
+     - The **pleural space was drained** (e.g., thoracentesis) but **no pleurodesis agent or abrasion was applied**.  
+     - The procedure was a **pleural biopsy or another intervention unrelated to pleurodesis**.  
+
+5. **Generate JSON Output**:  
+   - Your response **must** be a **valid JSON object** with the following structure:  
+
+
+\end{mdframed}
+
+\textit{\normalsize Prompt for Question  29:}
+\begin{mdframed}[]
+\normalsize
+
+Your task is to determine whether a **procedure involving a biliary drain or biliary stent** was performed.  
+
+- **Definition**:  
+  - **Biliary drain or stent procedures** include:  
+    - **Percutaneous transhepatic cholangiography (PTC)**  
+    - **Biliary drain placement, evaluation, or revision**  
+    - **Biliary stent placement or revision**  
+  - **Exclusion**:  
+    - **Cholecystostomy procedures (placement, exchange, or removal) do NOT count as biliary drain or stent procedures.**  
+
+If the procedure was explicitly performed, return `1` along with an explanation. Otherwise, return `0` with an explanation.
+
+Follow a structured reasoning approach to do the task:
+### **Reasoning Steps**  
+
+1. **Identify Mentions of a Biliary Drain or Stent Procedure**:  
+   - Look for phrases such as:  
+     - 'Percutaneous transhepatic cholangiography (PTC) performed'  
+     - 'Biliary drain placement/revision/exchange'  
+     - 'Biliary stent placement/revision'  
+     - 'Intervention in the biliary system with drain or stent'  
+
+2. **Confirm That It Matches the Definition**:  
+   - Ensure that the procedure was **actually performed**, not just recommended or considered.  
+   - Verify that **it involves the biliary system** and is **not related to the gallbladder (cholecystostomy)**.  
+
+3. **Resolve Ambiguities**:  
+   - If the report **mentions a prior biliary drain or stent** but does **not confirm a new procedure was performed**, classify as **not documented**.  
+   - If the report **only discusses imaging of the biliary system (e.g., MRCP) without intervention**, classify as **not performed**.  
+
+4. **Exclude Non-Biliary Procedures**:  
+   - **Do not classify as a biliary drain or stent procedure if:**  
+     - The procedure was a **cholecystostomy placement, exchange, or removal**.  
+     - The report describes **only a diagnostic cholangiogram with no intervention**.  
+     - The intervention was **related to another organ system (e.g., pancreatic duct stenting, nephrostomy placement, or GI stenting)**.  
+
+5. **Generate JSON Output**:  
+   - Your response **must** be a **valid JSON object** with the following structure:  
+
+\end{mdframed}
+
+\textit{\normalsize Prompt for Question  30:}
+\begin{mdframed}[]
+\normalsize
+
+Your task is to determine whether a **genitourinary drain procedure** was performed.  
+
+- **Definition**:  
+  - **Genitourinary drain procedures** include:  
+    - **Nephrostomy tube placement, exchange, revision, or removal**  
+    - **Nephroureteral stent placement, exchange, revision, or removal**  
+
+If the procedure was explicitly performed, return `1` along with an explanation. Otherwise, return `0` with an explanation.
+
+Follow a structured reasoning approach to do the task:
+
+### **Reasoning Steps**  
+
+1. **Identify Mentions of a Genitourinary Drain Procedure**:  
+   - Look for phrases such as:  
+     - 'Nephrostomy tube placed/exchanged/revised/removed'  
+     - 'Nephroureteral stent placement/exchange/revision/removal'  
+     - 'Percutaneous nephrostomy procedure performed'  
+     - 'Intervention involving urinary drainage system'  
+
+2. **Confirm That It Matches the Definition**:  
+   - Ensure that the procedure was **actually performed**, not just recommended or considered.  
+   - Verify that the procedure was **specific to the genitourinary system**, particularly **kidneys and ureters**.  
+
+3. **Resolve Ambiguities**:  
+   - If the report **mentions a prior nephrostomy tube or stent** but does **not confirm a new procedure**, classify as **not documented**.  
+   - If the report **only discusses imaging of the genitourinary system (e.g., CT Urogram, MR Urogram) without intervention**, classify as **not performed**.  
+
+4. **Exclude Non-Genitourinary Procedures**:  
+   - **Do not classify as a genitourinary drain procedure if:**  
+     - The procedure was **related to the bladder or urethra (e.g., Foley catheter placement, suprapubic catheter placement)**.  
+     - The report describes **only diagnostic imaging without any interventional component**.  
+     - The intervention was **related to another organ system (e.g., biliary drains, chest tubes, or gastrointestinal stents)**.  
+
+5. **Generate JSON Output**:  
+   - Your response **must** be a **valid JSON object** with the following structure:  
+
+\end{mdframed}
+
+\textit{\normalsize Prompt for Question  31:}
+\begin{mdframed}[]
+\normalsize
+
+Your task is to determine whether an **enterostomy procedure** was performed.  
+
+- **Definition**:  
+  - **Enterostomy procedures** include:  
+    - **Gastrostomy placement, exchange, revision, or removal**  
+    - **Gastrojejunostomy placement, exchange, revision, or removal**  
+    - **Jejunostomy placement, exchange, revision, or removal**  
+    - **Ileostomy placement, exchange, revision, or removal**  
+    - **Cecostomy placement, exchange, revision, or removal**  
+
+If the procedure was explicitly performed, return `1` along with an explanation. Otherwise, return `0` with an explanation.
+
+Follow a structured reasoning approach to do the task:
+
+### **Reasoning Steps**  
+
+1. **Identify Mentions of an Enterostomy Procedure**:  
+   - Look for phrases such as:  
+     - 'Gastrostomy tube placed/exchanged/revised/removed'  
+     - 'Gastrojejunostomy tube placement/exchange/revision/removal'  
+     - 'Jejunostomy procedure performed'  
+     - 'Percutaneous enterostomy tube placement'  
+     - 'Ileostomy or cecostomy intervention performed'  
+
+2. **Confirm That It Matches the Definition**:  
+   - Ensure that the procedure was **actually performed**, not just recommended or considered.  
+   - Verify that the procedure was **specific to the gastrointestinal system**, particularly the stomach, small intestine, or colon.  
+
+3. **Resolve Ambiguities**:  
+   - If the report **mentions a prior enterostomy procedure** but does **not confirm a new procedure**, classify as **not documented**.  
+   - If the report **only discusses enteric imaging (e.g., fluoroscopy to check tube placement) without intervention**, classify as **not performed**.  
+
+4. **Exclude Non-Enterostomy Procedures**:  
+   - **Do not classify as an enterostomy procedure if:**  
+     - The procedure was **related to the esophagus or rectum (e.g., esophageal stenting, rectal tube placement)**.  
+     - The report describes **only diagnostic imaging without any interventional component**.  
+     - The intervention was **related to another organ system (e.g., biliary or genitourinary procedures)**.  
+
+5. **Generate JSON Output**:  
+   - Your response **must** be a **valid JSON object** with the following structure:  
+
+\end{mdframed}
+
+\textit{\normalsize Prompt for Question  32:}
+\begin{mdframed}[]
+\normalsize
+
+Your task is to determine whether a **cholecystostomy procedure** was performed.  
+
+- **Definition**:  
+  - **Cholecystostomy procedures** include:  
+    - **Cholecystostomy drain or tube placement**  
+    - **Cholecystostomy drain or tube exchange**  
+    - **Cholecystostomy drain or tube revision**  
+    - **Cholecystostomy drain or tube removal**  
+    - **Cholecystography (contrast imaging of the gallbladder through a cholecystostomy tube)**  
+
+If the procedure was explicitly performed, return `1` along with an explanation. Otherwise, return `0` with an explanation.
+
+Follow a structured reasoning approach to do the task:
+
+
+### **Reasoning Steps**  
+
+1. **Identify Mentions of a Cholecystostomy Procedure**:  
+   - Look for phrases such as:  
+     - 'Cholecystostomy tube placed/exchanged/revised/removed'  
+     - 'Percutaneous cholecystostomy performed'  
+     - 'Cholecystography performed via cholecystostomy tube'  
+
+2. **Confirm That It Matches the Definition**:  
+   - Ensure that the procedure was **actually performed**, not just recommended or considered.  
+   - Verify that the procedure was **specific to the gallbladder**, involving intervention with a drain, tube, or contrast study.  
+
+3. **Resolve Ambiguities**:  
+   - If the report **mentions a prior cholecystostomy procedure** but does **not confirm a new procedure**, classify as **not documented**.  
+   - If the report **only describes gallbladder imaging (e.g., ultrasound, CT, or MRI) without intervention**, classify as **not performed**.  
+
+4. **Exclude Non-Cholecystostomy Procedures**:  
+   - **Do not classify as a cholecystostomy procedure if:**  
+     - The procedure was **related to the biliary system but did not involve a cholecystostomy drain or tube (e.g., biliary stenting, ERCP, PTC)**.  
+     - The report describes **only gallbladder assessment without intervention**.  
+     - The intervention was **related to another organ system (e.g., enterostomy or nephrostomy procedures)**.  
+
+5. **Generate JSON Output**:  
+   - Your response **must** be a **valid JSON object** with the following structure:  
+
+\end{mdframed}
+
+\textit{\normalsize Prompt for Question  33:}
+\begin{mdframed}[]
+\normalsize
+
+Your task is to determine whether a **cyst or lymphocele procedure** was performed.  
+
+- **Definition**:  
+  - **Cyst or lymphocele procedures** include:  
+    - **Aspiration of a cyst or lymphocele**  
+    - **Drain placement for a cyst or lymphocele**  
+    - **Drain exchange, revision, or removal for a cyst or lymphocele**  
+    - **Sclerosis of a cyst or lymphocele (injecting a sclerosing agent to obliterate the lesion)**  
+
+If the procedure was explicitly performed, return `1` along with an explanation. Otherwise, return `0` with an explanation.
+
+Follow a structured reasoning approach to do the task:
+
+### **Reasoning Steps**  
+
+1. **Identify Mentions of a Cyst or Lymphocele Procedure**:  
+   - Look for phrases such as:  
+     - 'Aspiration of cyst/lymphocele performed'  
+     - 'Drain placed/exchanged/revised/removed for cyst/lymphocele'  
+     - 'Sclerotherapy performed for cyst/lymphocele'  
+
+2. **Confirm That It Matches the Definition**:  
+   - Ensure that the procedure was **actually performed**, not just recommended or considered.  
+   - Verify that the intervention was **specific to a cyst or lymphocele**.  
+
+3. **Resolve Ambiguities**:  
+   - If the report **mentions a prior cyst or lymphocele procedure** but does **not confirm a new procedure**, classify as **not documented**.  
+   - If the report **only describes imaging (e.g., ultrasound, CT, or MRI) of a cyst or lymphocele without intervention**, classify as **not performed**.  
+
+4. **Exclude Non-Cyst/Lymphocele Procedures**:  
+   - **Do not classify as a cyst or lymphocele procedure if:**  
+     - The procedure was **related to an abscess or other fluid collection (e.g., abscess drainage, seroma drainage, or pleural effusion drainage)**.  
+     - The report describes **only diagnostic assessment without an interventional procedure**.  
+     - The intervention was **related to another organ system (e.g., biliary drainage, peritoneal fluid drainage, nephrostomy, or cholecystostomy procedures)**.  
+
+5. **Generate JSON Output**:  
+   - Your response **must** be a **valid JSON object** with the following structure:  
+
+\end{mdframed}
+
+\textit{\normalsize Prompt for Question  34:}
+\begin{mdframed}[]
+\normalsize
+
+Your task is to determine whether a **nonvascular stent placement** was performed.  
+
+- **Definition**:  
+  - **Nonvascular stents** refer to stents placed in non-blood vessel structures, including:  
+    - **Esophageal stent placement**  
+    - **Tracheobronchial (airway) stent placement**  
+    - **Duodenal stent placement**  
+    - **Colonic stent placement**  
+
+If the procedure was explicitly performed, return `1` along with an explanation. Otherwise, return `0` with an explanation.
+
+Follow a structured reasoning approach to do the task:
+
+### **Reasoning Steps**  
+
+1. **Identify Mentions of a Nonvascular Stent Placement**:  
+   - Look for terms such as:  
+     - 'Esophageal stent placed'  
+     - 'Tracheal/bronchial stent placement performed'  
+     - 'Duodenal stent deployed'  
+     - 'Colonic stent placement completed'  
+
+2. **Confirm That It Matches the Definition**:  
+   - Ensure that the procedure was **actually performed**, not just recommended or planned.  
+   - Verify that the **stent was placed in a nonvascular structure**.  
+
+3. **Resolve Ambiguities**:  
+   - If the report **mentions a prior nonvascular stent placement** but does **not confirm a new procedure**, classify as **not documented**.  
+   - If the report **only describes imaging (e.g., X-ray, fluoroscopy, or CT) of a stent without confirming a new placement**, classify as **not performed**.  
+
+4. **Exclude Non-Stent and Vascular Stent Procedures**:  
+   - **Do not classify as nonvascular stent placement if:**  
+     - The procedure involves **vascular (arterial or venous) stents**, such as in coronary, carotid, iliac, or femoral arteries.  
+     - The procedure involves **other non-stent interventions**, such as dilation without stent placement.  
+     - The report describes **only a stent exchange, removal, or revision** without confirming a new stent placement.  
+
+5. **Generate JSON Output**:  
+   - Your response **must** be a **valid JSON object** with the following structure:  
+
+\end{mdframed}
+
+\textit{\normalsize Prompt for Question  35:}
+\begin{mdframed}[]
+\normalsize
+
+Your task is to determine whether a **miscellaneous nonvascular transplant intervention** was performed.  
+
+- **Definition**:  
+  - A **miscellaneous nonvascular transplant intervention** refers to **procedures performed exclusively on a transplant organ that do not involve arteries or veins**.  
+  - The report **must explicitly confirm that the organ is a transplant organ** (not a native organ).  
+  - **Examples include**:  
+    - **Stent placement** involving a transplant organ  
+    - **Balloon plasty procedures**, such as **ureteroplasty**  
+
+If the procedure was explicitly performed, return `1` along with an explanation. Otherwise, return `0` with an explanation.
+
+Follow a structured reasoning approach to do the task:
+### **Reasoning Steps**  
+
+1. **Identify Mentions of a Transplant Organ**:  
+   - Look for explicit mentions that the **organ is a transplant**:  
+     - Phrases like '**transplant kidney**,' '**transplant liver**,' or '**transplant ureter**' confirm that the organ is not native.  
+   - If the report does **not** specify that the organ is a **transplant**, classify as **not documented (0)**.  
+
+2. **Identify a Relevant Nonvascular Intervention**:  
+   - Look for **nonvascular procedures** performed **on the transplant organ**:  
+     - Stent placements in a transplant organ  
+     - Balloon plasty procedures (e.g., **ureteroplasty**)  
+   - **Do NOT include vascular procedures**, such as:  
+     - **Transplant renal artery stenosis (TRAS) interventions**  
+     - **Transjugular biopsy procedures**  
+   - **Do NOT include** general drainage procedures such as:  
+     - Nephrostomy placement/exchange/removal  
+     - Nephroureterostomy placement/exchange/removal  
+     - Biliary tube placement/exchange/removal  
+
+3. **Confirm That the Procedure Was Performed**:  
+   - The procedure must be **explicitly stated as completed**, not just planned or considered.  
+   - If the report only describes **imaging or evaluation** without confirming an **intervention**, classify as **not performed**.  
+
+4. **Resolve Ambiguities**:  
+   - If the report **mentions a prior nonvascular transplant intervention** but does **not confirm a new procedure**, classify as **not documented**.  
+   - If the procedure is **only vascular in nature**, classify as **not performed**.  
+
+5. **Generate JSON Output**:  
+   - Your response **must** be a **valid JSON object** with the following structure:  
+
+\end{mdframed}
+
+\textit{\normalsize Prompt for Question  36:}
+\begin{mdframed}[]
+\normalsize
+
+Your task is to determine whether a **tumor ablation** procedure was performed.  
+
+- **Definition**:  
+  - A **tumor ablation** is a procedure that destroys tumor tissue using thermal, chemical, or energy-based methods.  
+  - **Examples of tumor ablation methods include**:  
+    - **Radiofrequency ablation (RFA)**  
+    - **Laser ablation**  
+    - **Microwave ablation**  
+    - **Cryoablation**  
+    - **Ethanol injection/administration**  
+
+If the procedure was explicitly performed, return `1` along with an explanation. Otherwise, return `0` with an explanation.
+
+Follow a structured reasoning approach to do the task:
+### **Reasoning Steps**  
+
+1. **Identify Mentions of a Tumor Ablation Procedure**:  
+   - Look for terms indicating that a **tumor ablation** was **performed**, such as:  
+     - **'Radiofrequency ablation (RFA) performed'**  
+     - **'Microwave ablation completed'**  
+     - **'Cryoablation applied to tumor'**  
+     - **'Ethanol injection administered'**  
+
+2. **Differentiate from Other Procedures**:  
+   - **Do NOT include** interventions that are **not ablations**, such as:  
+     - **Surgical tumor resection**  
+     - **Tumor embolization (TACE or TARE)**  
+     - **Biopsy procedures**  
+   - If the report only mentions **imaging, planning, or evaluation** for an ablation **without confirming its completion**, classify as **not performed**.  
+
+3. **Confirm That the Procedure Was Performed**:  
+   - The procedure must be **explicitly stated as completed**, not just planned or considered.  
+   - If the report only describes an **intended** or **future** ablation, classify as **not performed**.  
+
+4. **Resolve Ambiguities**:  
+   - If the report mentions a **prior tumor ablation** but does not confirm a new procedure, classify as **not documented**.  
+   - If the ablation is only referenced as a **potential treatment option** but was not performed, classify as **not performed**.  
+
+5. **Generate JSON Output**:  
+   - Your response **must** be a **valid JSON object** with the following structure:  
+
+\end{mdframed}
+
+\textit{\normalsize Prompt for Question  37:}
+\begin{mdframed}[]
+\normalsize
+
+Your task is to determine whether a **pain management procedure** was performed.  
+
+- **Definition**:  
+  - A **pain management procedure** is an interventional procedure aimed at alleviating pain.  
+  - **Examples of pain management procedures include**:  
+    - **Steroid injection**  
+    - **Celiac plexus neurolysis**  
+    - **Nerve cryoablation**  
+    - **Periosteal cryoablation**  
+
+If the procedure was explicitly performed, return `1` along with an explanation. Otherwise, return `0` with an explanation.
+
+Follow a structured reasoning approach to do the task:
+
+### **Reasoning Steps**  
+
+1. **Identify Mentions of a Pain Management Procedure**:  
+   - Look for terms indicating that a **pain management intervention** was **performed**, such as:  
+     - **'Steroid injection administered'**  
+     - **'Celiac plexus neurolysis performed'**  
+     - **'Nerve cryoablation completed'**  
+     - **'Periosteal cryoablation applied'**  
+
+2. **Differentiate from Other Procedures**:  
+   - **Do NOT include** interventions that are **not specifically pain management**, such as:  
+     - **General anesthesia or sedation**  
+     - **Surgical nerve decompression**  
+     - **Tumor ablation procedures (unless explicitly performed for pain relief)**  
+   - If the report only mentions **imaging, planning, or evaluation** for a pain management procedure **without confirming its completion**, classify as **not performed**.  
+
+3. **Confirm That the Procedure Was Performed**:  
+   - The procedure must be **explicitly stated as completed**, not just planned or considered.  
+   - If the report only describes an **intended** or **future** pain management procedure, classify as **not performed**.  
+
+4. **Resolve Ambiguities**:  
+   - If the report mentions a **prior pain management procedure** but does not confirm a new one, classify as **not documented**.  
+   - If the procedure is only referenced as a **potential treatment option** but was not performed, classify as **not performed**.  
+
+5. **Generate JSON Output**:  
+   - Your response **must** be a **valid JSON object** with the following structure:  
+
+\end{mdframed}
+
+\textit{\normalsize Prompt for Question  38:}
+\begin{mdframed}[]
+\normalsize
+
+Your task is to determine whether a **Fallopian tube recanalization** was performed.  
+
+- **Definition**:  
+  - **Fallopian tube recanalization (FTR)** is an interventional radiology procedure aimed at reopening blocked Fallopian tubes to restore fertility.  
+  - **This procedure involves**:  
+    - The use of **fluoroscopy and contrast dye** to visualize the Fallopian tubes.  
+    - **Catheterization** or **balloon inflation** to clear obstructions.  
+
+If the procedure was explicitly performed, return `1` along with an explanation. Otherwise, return `0` with an explanation.
+
+Follow a structured reasoning approach to do the task:
+
+### **Reasoning Steps**  
+
+1. **Identify Mentions of a Fallopian Tube Recanalization Procedure**:  
+   - Look for terms indicating that an **FTR procedure** was performed, such as:  
+     - **'Fallopian tube recanalization completed'**  
+     - **'Selective catheterization of the Fallopian tube performed'**  
+     - **'Balloon dilation of Fallopian tube performed'**  
+
+2. **Differentiate from Related Procedures**:  
+   - **Do NOT include** procedures that are **not Fallopian tube recanalization**, such as:  
+     - **Hysterosalpingography (HSG) alone** (without intervention)  
+     - **Salpingectomy (Fallopian tube removal)**  
+     - **In vitro fertilization (IVF) procedures**  
+     - **General fertility evaluations or imaging**  
+
+3. **Confirm That the Procedure Was Performed**:  
+   - The procedure must be **explicitly stated as completed**, not just planned or considered.  
+   - If the report only describes an **intended** or **future** Fallopian tube recanalization, classify as **not performed**.  
+
+4. **Resolve Ambiguities**:  
+   - If the report mentions a **prior Fallopian tube recanalization** but does not confirm a new one, classify as **not documented**.  
+   - If the procedure is only referenced as a **potential treatment option** but was not performed, classify as **not performed**.  
+
+5. **Generate JSON Output**:  
+   - Your response **must** be a **valid JSON object** with the following structure:  
+
+\end{mdframed}
+
+\textit{\normalsize Prompt for Question  39:}
+\begin{mdframed}[]
+\normalsize
+
+Your task is to determine whether a **nonvascular, invasive procedure** was performed, while ensuring it **does not** fall into any of the **excluded categories** listed below.
+
+- **Definition**:  
+  - A **nonvascular, invasive procedure** involves the insertion of instruments or devices into the body, either through the skin or a natural orifice, **but does not** involve blood vessels (arteries or veins).  
+
+- **Excluded Categories**:  
+  - **Biopsy (percutaneous or otherwise)**
+  - **Abscess drainage & tube checks**
+  - **Paracentesis or thoracentesis**
+  - **Chest tube placement or pleurodesis**
+  - **Biliary interventions** (PTC, biliary drainage/stent procedures)
+  - **Tube checks (for any previously placed drainage tubes)**
+  - **Genitourinary interventions** (nephrostomy, nephroureteral tube placements/exchanges/removals)
+  - **Gastrointestinal interventions** (gastrostomy, gastrojejunostomy, cholecystostomy)
+  - **Cyst or lymphocele interventions**
+  - **Nonvascular stents** (esophageal, tracheobronchial, duodenal, colonic)
+  - **Transplant-related nonvascular interventions**
+  - **Tumor ablation (RFA, microwave, cryoablation, ethanol)**
+  - **Pain management procedures (nerve blocks, neurolysis, cryoablation)**
+  - **Fallopian tube recanalization**
+  - **Any intravascular procedure** (angioplasty, stenting, embolization, ablation, dialysis access, venous access, TIPS, DIPS, IVC filter procedures, TACE, TARE)
+
+If the procedure was explicitly performed, return `1` along with an explanation. Otherwise, return `0` with an explanation.
+
+Follow a structured reasoning approach to do the task:
+### **Reasoning Steps**  
+
+1. **Identify the Presence of an Invasive Procedure**:  
+   - Look for descriptions of **instrumentation insertion** into the body through the skin or natural orifices.  
+   - Common indicators include:  
+     - **“Percutaneous intervention”**  
+     - **“Endoscopic intervention”**  
+     - **“Device placement”**  
+     - **“Surgical instrument insertion”**  
+
+2. **Check If the Procedure Falls Into an Excluded Category**:  
+   - Compare the procedure against the **list of excluded interventions**.  
+   - If the procedure **matches any exclusion**, classify as **not qualifying (return `0`)**.  
+
+3. **Determine If the Procedure Is a Nonvascular, Invasive Procedure Not Listed as Excluded**:  
+   - If it **does not** involve **arteries or veins** and is **not in the exclusion list**, classify as **qualifying (return `1`)**.  
+   - Examples of qualifying procedures:  
+     - **Foreign body removal from a nonvascular structure**  
+     - **Fiducial marker placement (nonvascular target, such as lung or prostate)**  
+     - **Percutaneous decompression of a non-abscess fluid collection (not cyst/lymphocele-related)**  
+
+4. **Resolve Ambiguities**:  
+   - If the report **only mentions a history of a procedure but no new procedure was performed**, classify as **not documented (`0`)**.  
+   - If the procedure is **described as planned but not yet performed**, classify as **not performed (`0`)**.  
+
+5. **Generate JSON Output**:  
+   - Your response **must** be a **valid JSON object** with the following structure:  
+
+\end{mdframed}
+
