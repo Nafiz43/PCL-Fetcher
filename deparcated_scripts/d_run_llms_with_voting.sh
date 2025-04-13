@@ -1,3 +1,5 @@
+# Developed at DECAL Lab in CS Department @ UC Davis by Nafiz Imtiaz Khan (nikhan@ucdavis.edu)
+# Copyright © 2025 The Regents of the University of California, Davis campus. All Rights Reserved. Used with permission.
 python3 run_llms_with_voting.py --model_1=llama3.2:latest --model_2=mistral --model_3=llama3.1:latest --reports_to_process=-1
 
 

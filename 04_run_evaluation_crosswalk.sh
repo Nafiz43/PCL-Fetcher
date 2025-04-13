@@ -1,3 +1,5 @@
+# Developed at DECAL Lab in CS Department @ UC Davis by Nafiz Imtiaz Khan (nikhan@ucdavis.edu)
+# Copyright © 2025 The Regents of the University of California, Davis campus. All Rights Reserved. Used with permission.
 python3 run_evaluation_crosswalk.py --reports_to_process 10
 
 
