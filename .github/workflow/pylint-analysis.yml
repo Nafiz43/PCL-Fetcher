@@ -3,11 +3,9 @@ name: Python Lint with Pylint
 # Trigger the workflow on push or pull request events for the main branch
 on:
   push:
-    branches:
-      - ["main", "master" ] 
+    branches: ["main", "master" ] 
   pull_request:
-    branches:
-      - ["main", "master" ] 
+    branches: ["main", "master" ] 
 
 jobs:
   lint:
