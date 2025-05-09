@@ -148,6 +148,29 @@
                   <span>Paper</span>
                 </a>
               </span>
+
+
+              <span class="link-block">
+                <a href="" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-cogs"></i>
+                  </span>
+                  <span>Methodology</span>
+                </a>
+              </span>
+
+
+              <span class="link-block">
+                <a href="" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-chart-line	"></i>
+                  </span>
+                  <span>Result</span>
+                </a>
+              </span>
+
               <!-- Code Link. -->
               <span class="link-block">
                 <a href="https://github.com/Nafiz43/PCL-Fetcher" target="_blank"
@@ -234,6 +257,119 @@
     </div>
   </div>
 </section>  -->
+<section class="section" id="Methodology">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Methodology</h2>
+        <div class="content has-text-justified">
+
+          <p>
+            Our methodology integrates a structured pipeline for automating procedural case logs using large language models (LLMs). The architecture below illustrates the complete system—from unstructured radiology report ingestion to structured output generation and evaluation.
+          </p>
+
+          <p class="has-text-centered">
+            <a href="static/images/methodology.png" target="_blank">
+              <img src="static/images/methodology.png" alt="Methodology Architecture Diagram" style="max-width: 100%; border: 1px solid #ccc; padding: 4px;">
+            </a>
+          </p>
+
+          <p>
+            The process begins with a collection of <strong>radiology reports</strong> authored by residents during clinical practice. These reports describe diagnostic and interventional procedures using unstructured narrative text.
+          </p>
+
+          <p>
+            A <strong>data cleaning module</strong> is applied to each report to eliminate administrative blocks, signatures, disclaimers, and non-ASCII artifacts. The result is a <em>cleaned report</em> which is used in two parallel downstream tasks:
+          </p>
+
+          <ul>
+            <li><strong>Manual Annotation:</strong> Expert annotators read the reports and label them for 39 predefined procedures. These form the <em>ground truth</em> labels.</li>
+            <li><strong>LLM-Based Inference:</strong> The cleaned reports are processed by instruction-tuned models (e.g., Qwen-2.5, Claude-3.5-Haiku) using two prompt strategies—Instruction Prompting (IP) and Chain-of-Thought (CoT).</li>
+          </ul>
+
+          <p>
+            The LLMs receive one prompt per procedure and return a structured JSON response with a binary label and a short justification.
+          </p>
+
+          <h3 class="title is-4">Prompting Strategies</h3>
+          <p>
+            The following templates guide how the LLMs are queried. Each prompt strictly enforces a JSON-based output schema to ensure consistency and downstream parsability.
+          </p>
+
+          <!-- Instruction Prompting Template -->
+          <figure class="box">
+            <figcaption class="has-text-weight-bold mb-2">Prompt Template for Instruction Prompting (IP)</figcaption>
+<div style="text-align: left; overflow-x: hidden;">
+  <pre style="white-space: pre-wrap; word-wrap: break-word;">
+    <code class="language-python">
+I will provide you with a radiology report, followed by several questions about it. Your task is to determine whether a specific radiology study or procedure was performed. Please follow these strict formatting guidelines for your response:
+
+Output must be in valid JSON format with the following keys:
+
+{
+  "reason_for_the_label": "A string explaining the reasoning behind the classification.",
+  "label": 1 or 0
+}
+
+Labeling criteria:
+- Return 1 if the radiology study or procedure was explicitly mentioned as performed.
+- Return 0 if the study or procedure was not performed, not documented, or uncertain in the report.
+- Do not include any additional text or explanations outside the JSON response.
+- Ensure strict adherence to this format for every response.
+    </code>
+  </pre>
+</div>
+          </figure>
+
+          <!-- CoT Prompting Template -->
+          <figure class="box">
+            <figcaption class="has-text-weight-bold mb-2">
+              Prompt Template for Chain-of-Thought (CoT) Prompting
+            </figcaption>
+            <div style="text-align: left; overflow-x: hidden;">
+  <pre style="white-space: pre-wrap; word-wrap: break-word;">
+    <code class="language-python">
+I will provide you with a radiology report, followed by a question about whether a specific radiology study or procedure was performed.
+
+&lt;procedure_specific_question&gt;
+
+### Strict Output Format
+Your response must be a valid JSON object with the following keys:
+{
+  "reason_for_the_label": "A concise explanation justifying the classification.",
+  "label": 1 or 0
+}
+    </code>
+  </pre>
+</div>
+          </figure>
+
+          <p>
+            After inference, each LLM response is compared to the expert-annotated ground truth using the following metrics:
+          </p>
+
+          <ul>
+            <li><strong>Sensitivity:</strong> Ability to correctly detect procedures present in the report.</li>
+            <li><strong>Specificity:</strong> Ability to correctly ignore procedures not present.</li>
+            <li><strong>F1-Score:</strong> Harmonic mean of precision and recall.</li>
+            <li><strong>Inference Time:</strong> Latency per question-response cycle.</li>
+            <li><strong>Token Count:</strong> Proxy for verbosity and computational cost.</li>
+          </ul>
+
+          <p>
+            These evaluations reveal that LLMs significantly outperform rule-based baselines (e.g., crosswalk-based detection) in terms of accuracy and sensitivity, while maintaining cost-effectiveness in both local and commercial deployments.
+          </p>
+
+          <p>
+            The system is highly modular—supporting plug-and-play for new models, prompt types, or evaluation criteria. All LLM interactions are logged for transparency, auditability, and reproducibility, making the system viable for real-world deployment in clinical residency settings.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 
 <section class="section" id="Installation">
@@ -268,7 +404,8 @@
 
           <h2 id="installation">Installation</h2>
           <ol>
-            <li>Ensure Miniconda is installed</li>
+            <li>Clone the repository:<br><code>git clone https://github.com/Nafiz43/PCL-Fetcher </code>
+            <li>Make sure Miniconda is installed. You can follow the official installation guide here: <a href="https://www.anaconda.com/docs/getting-started/miniconda/install" target="_blank">Miniconda Installation Guide</a>.</li>
             <li>Create a conda environment with Python 3.12:<br><code>conda create -n pcl-fetcher python=3.10</code></li>
             <li>Activate the conda environment:<br><code>conda activate myenv</code></li>
             <li>Install all required packages:<br><code>pip install -r requirements.txt</code></li>
@@ -314,12 +451,87 @@
   </div>
 </section>
 
-
-
-
-
-
 <section class="section" id="Docker">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Docker Setup Guide</h2>
+        <div class="content has-text-justified">
+
+          <h2>Docker Commands</h2>
+          <ol>
+            <li>
+              <strong>Download the Dockerfile:</strong><br>
+              Get it from <a href="https://github.com/Nafiz43/PCL-Fetcher/blob/master/Dockerfile" target="_blank">this GitHub link</a>.
+            </li>
+
+            <li>
+              <strong>Build the Docker image:</strong><br>
+              <pre><code>sudo docker build -t pcl-container .</code></pre>
+              This will create a Docker image named <code>pcl-container</code>.
+            </li>
+
+            <li>
+              <strong>Run the Docker container with GPU access:</strong><br>
+              <pre><code>sudo docker run -it --rm --gpus=all pcl-container /bin/bash</code></pre>
+              This opens an interactive shell in the container and enables GPU access.
+            </li>
+
+            <li>
+              <strong>Start the Ollama server inside the container:</strong><br>
+              <pre><code>ollama serve &</code></pre>
+              This will run the Ollama server in the background.
+            </li>
+
+            <li>
+              <strong>Install and launch your desired LLM model:</strong><br>
+              For example, to install and run <code>llama3.2:latest</code>, run:
+              <pre><code>ollama run llama3.2:latest</code></pre>
+              You can substitute this with any other model you wish to test. Once the model is installed and the server is up, you can run the same experiment commands used in the non-Docker version—no additional installation needed.
+            </li>
+
+            <li>
+              <strong>Copy results from the container to your local machine:</strong>
+              <ol type="I">
+                <li>Open a new terminal.</li>
+                <li>Check the name of the running container:
+                  <pre><code>sudo docker ps</code></pre>
+                </li>
+                <li>Copy the <code>results</code> directory using:
+                  <pre><code>docker cp CONTAINER_NAME:/app/results /home/nikhan/Data/Case_Log_Data/Procedural-Case-Log</code></pre>
+                  Replace <code>CONTAINER_NAME</code> with the actual container name from the previous step.
+                </li>
+              </ol>
+            </li>
+
+            <li>
+              <strong>Exit the Docker container:</strong><br>
+              <pre><code>exit</code></pre>
+            </li>
+          </ol>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+ <!-- <section class="section" id="System-Docker">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Installation Manual</h2>
+        <div class="content has-text-justified">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>  -->
+
+
+<!-- <section class="section" id="Docker">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
@@ -357,7 +569,7 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 
 
@@ -369,7 +581,7 @@
           Acknowledgements
         </h2>
         <p>
-          This research was supported by the National Science Foundation under Grant No. 2020751, as well as by the Alfred P. Sloan Foundation through the OSPO for UC initiative (Award No. 2024-22424).
+          This research was supported by the National Science Foundation under Grant No. 2020751.
         </p> 
        
       </div>

@@ -77,6 +77,7 @@ conda activate myenv
 
 
 ## Docker Commands:
+1. Download the Dockerfile from here: https://github.com/Nafiz43/PCL-Fetcher/blob/master/Dockerfile
 1. Building the Docker Image:
    ```
       sudo docker build -t pcl-container .
