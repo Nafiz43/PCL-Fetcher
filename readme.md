@@ -20,7 +20,7 @@ The system needs a GPU to get a faster response from the models. The amount of V
 
 1. Ensure Miniconda is installed
 
-2. Create a conda enviroment with python 3.10:
+2. Create a conda enviroment with python 3.12:
 
 conda create -n pcl-fetcher python=3.10
 
@@ -41,39 +41,25 @@ conda activate myenv
 
 ## Running the Project
 
-1. Place your annotated dataset inside the `data` directory.
+1. Place your annotated ground-truth dataset inside the `data` directory.
 
-2. Rename the dataset as `PCL_p.csv` to maintain consistency
+2. Rename the dataset as `ground-truth.csv` to maintain consistency
 
 3. Run the following command to derive responses from LLMs:
    ```
-   python3 run_llm.py --model_name=mixtral:8x7b-instruct-v0.1-q4_K_M --model_type=mistral --save_qa
+   python3 01_run_llm.py --model_name=MODEL-NAME --prompting_method=PROMPTING-METHOD --reports_to_process=-1
    ```
 
    Command breakdown:
    - `--model_name`: Name of the model to run (e.g., mixtral:8x7b-instruct-v0.1-q4_K_M)
+   - `--prompting_method`: Name of the prompting method. Two options available: 1) IP, stands for Instruction Prompting; 2)CoT, stands for Chain-of-Thought prompting. 
    - `--reports_to_process=-1`: Number of reports to process. It accepts a valid integer. By default=-1; it will process all the reports. 
 
    LLM responses will be stored in the `local_chat_history` directory.
-
-   To get voted response from the LLMs:
-   Run the following command to derive responses based on majority voting:
-   ```
-   python3 run_llm.py --model_1=llama3.2:latest --model_2=mistral --model_3=llama3.1:latest --reports_to_process=-1
-   ```
-
-   Command breakdown:
-   - `--model_1`: Name of the FIRST model to run (e.g., mixtral:8x7b-instruct-v0.1-q4_K_M)
-   - `--model_2`: Name of the SECOND to run (e.g., mistral)
-   - `--model_3`: Name of the THIRD to run (e.g., llama3.1:latest)
-   - `--reports_to_process=-1`: Number of reports to process. It accepts a valid integer. By default=-1; it will process all the reports. 
-
-   LLM responses will be stored in the `local_chat_history` directory.
-   
 
 
 ## Calculating the evaluation metrics
-1. Open the run_evaluation_weighted.py file if you want weighted average or open run_evaluation_macro.py if you want macro averaging.
+1. Open the run_evaluation.py file
 
 2. Update the name of the following variables:
 
@@ -81,29 +67,13 @@ conda activate myenv
 
 3. Run the following command in the shell:
    ```
-   python3 run_evaluation_weighted.py --reports_to_process=-1
-   ```
-   OR,
-   ```
-   python3 run_evaluation_macro.py --reports_to_process=-1
+   python3 run_evaluation.py --reports_to_process=-1
    ```
    Command breakdown:
    - `--reports_to_process=-1`: Number of reports to process. It accepts a valid integer. By default=-1; it will process all the reports. 
 
 
-4. Results will be stored in `result.csv` file
-
-
-However, if you want to see block-by-block output from the code, do the following:
-1. Open the `evaluation.ipynb` notebook
-
-2. Activate the localGPT enviroment 
-
-3. In the third cell of the notebook, rename the LLM response file
-
-4. Run all the cells sequenrially.
-
-5. Result will be stored in `result.csv` file
+4. Results will be stored in `results/all_models.csv` file
 
 
 ## Docker Commands:
@@ -191,3 +161,12 @@ For Bedrock Enviroment:
 ```
    pkill ollama
 ```
+
+### Contributing
+We welcome contributions! To get started, feel free to browse through the open issues—your insights and efforts are greatly appreciated. If you’d like to suggest improvements or fix a bug, please fork the repository and open a Pull Request (PR). For substantial changes or new features, we recommend opening an issue first to start a discussion. We’re looking forward to collaborating with you!
+
+### Contact
+In case of any questions, feel free to reach out to nikhan@ucdavis.edu.
+
+### License
+This project is licensed under the Apache License 2.0.
