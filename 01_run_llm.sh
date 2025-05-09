@@ -29,7 +29,7 @@
 
 # python3 01_run_llm.py --model_name=thewindmom/llama3-med42-8b:latest --prompting_method=IP --reports_to_process=-1 log-files/llama3med42_IP_temp0.txt
 
-python3 01_run_llm.py --model_name=anthropic.claude-3-5-haiku-20241022-v1:0 --prompting_method=IP --reports_to_process=-1 >> log-files/claude_haiku_IP_temp0.txt
+# python3 01_run_llm.py --model_name=anthropic.claude-3-5-haiku-20241022-v1:0 --prompting_method=IP --reports_to_process=-1 >> log-files/claude_haiku_IP_temp0.txt
 
 
 
@@ -46,7 +46,7 @@ python3 01_run_llm.py --model_name=anthropic.claude-3-5-haiku-20241022-v1:0 --pr
 
 # python3 01_run_llm.py --model_name=thewindmom/llama3-med42-8b:latest --prompting_method=CoT --reports_to_process=-1 >> log-files/llama3med42_CoT_temp0.txt
 
-# python3 01_run_llm.py --model_name=anthropic.claude-3-5-haiku-20241022-v1:0 --prompting_method=CoT --reports_to_process=-1 >> log-files/claude_haiku_CoT_temp0.txt
+python3 01_run_llm.py --model_name=anthropic.claude-3-5-haiku-20241022-v1:0 --prompting_method=CoT --reports_to_process=-1 >> log-files/claude_haiku_CoT_temp0.txt
 
 
 

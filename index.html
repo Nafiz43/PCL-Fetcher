@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Intelligent Documentation in Medical Education: Can AI Replace Manual Case Logging?">
+  <meta name="keywords" content="OSS">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OSSPREY
+  </title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.ico">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script data-goatcounter="https://ossprey-web-analytics.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+<style>
+  ol li {
+  margin-bottom: 1em; 
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://decallab.cs.ucdavis.edu/" target="_blank">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <!-- <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Previously Built Tools
+        </a>
+        <div class="navbar-dropdown">
+          
+          <a class="navbar-item" href="https://ossreacts.netlify.app/" target="_blank">
+            ReACTive
+          </a>
+          <a class="navbar-item" href="https://github.com/Nafiz43/EvidenceBot" target="_blank">
+            EvidenceBot
+          </a>
+        </div>
+      </div> -->
+
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">  
+          <a class="navbar-item" href="https://amia.secure-platform.com/cic/gallery/rounds/82015/details/17117" target="_blank">
+            Automation of PCL
+          </a>
+
+          <!-- <a class="navbar-item" href="https://dl.acm.org/doi/abs/10.1145/3663529.3663777" target="_blank">
+            Researched ACTionable (ReACT)
+          </a> -->
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <img src="static/images/documentation_burden.png" alt="OSSPREY System Architecture" style="height: 35%; width: 45%;">
+          <h1 class="title is-1 publication-title">Intelligent Documentation in Medical Education: Can AI Replace Manual Case Logging?</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://nafiz43.github.io/portfolio/">Nafiz Imtiaz Khan</a>,</span>
+            <span class="author-block">
+              <a href="https://www.cs.ucdavis.edu/~filkov/" target="_blank">Vladimir Filkov</a>,
+
+            </span>
+            <span class="author-block">
+              <a href="https://www.linkedin.com/in/arjashok" target="_blank">Kylie Cleland</a>,
+            </span>
+
+            <span class="author-block">
+              <a href="https://www.cs.ucdavis.edu/~filkov/" target="_blank">Roger Eric Goldman</a>
+            </span>
+           
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Department of Computer Science, University of California, Davis</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <!-- <span class="link-block">
+                <a href="https://arxiv.org/pdf/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span> -->
+              <!-- Live Link. -->
+              <span class="link-block">
+                <a href="" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-file-alt"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/Nafiz43/PCL-Fetcher" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href="https://zenodo.org/records/15307373" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+            </span> -->
+              <!-- Installation Manual. -->
+            <span class="link-block">
+              <a href="#Installation" target="_blank"
+                 class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                    <i class="fas fa-tools"></i>
+                </span>
+                <span>Install</span>
+                </a>
+          </span>
+
+          <span class="link-block">
+            <a href="#Docker" target="_blank"
+               class="external-link button is-normal is-rounded is-dark">
+              <span class="icon">
+                <i class="fab fa-docker"></i>
+              </span>
+              <span>Docker</span>
+              </a>
+        </span>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Accurate documentation of procedural case logs is a critical component of radiology training, serving as the basis for competency assessment, credentialing, and regulatory compliance. However, current case logging workflows rely heavily on manual annotation by trainees—an error-prone and time-consuming process that imposes significant administrative burden and detracts from clinical learning. Traditional approaches, such as the crosswalk method that maps structured metadata to procedure labels, often fail to capture procedures documented only in free-text, resulting in incomplete logs and underreporting.
+
+            In this study, we explore the feasibility of automating procedural case log generation using large language models (LLMs). We evaluate two state-of-the-art LLMs— <code>Qwen-2.5</code> (a local, open-source model) and <code>Claude-3.5-Haiku</code> (a commercial API model)—under two prompting strategies: Instruction Prompting and Chain-of-Thought reasoning. Across 39 radiological procedures, both models substantially outperform the crosswalk benchmark in terms of sensitivity and F1-score, while maintaining high specificity. Error analysis reveals that model performance varies by procedure complexity and linguistic ambiguity. Additionally, we quantify the cost of inference in terms of latency and token generation, and demonstrate that LLM-based solutions could save over 30-40 hours of manual annotation time per resident annually. Our findings suggest that LLMs offer a scalable, cost-effective, and high-fidelity alternative to manual case logging, paving the way for intelligent documentation systems that support medical education while reducing clerical workload.
+            </p>
+
+           <!-- <p>To learn more about OSSPREY, visit our live link at <a href="https://ossprey.netlify.app" target="_blank">ossprey.netlify.app</a>.
+         -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+ <!-- <section class="section" id="System-Architecture">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Installation Manual</h2>
+        <div class="content has-text-justified">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>  -->
+
+
+<section class="section" id="Installation">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Installation Manual</h2>
+        <div class="content has-text-justified">
+
+          <h1>Procedural Case Log Project</h1>
+          <p>This README provides instructions for setting up and running the Procedural Case Log project.</p>
+
+          <h2>Table of Contents</h2>
+          <ol>
+            <li><a href="#system-requirements">System Requirements</a></li>
+            <li><a href="#installation">Installation</a></li>
+            <li><a href="#running-the-project">Running the Project</a></li>
+            <li><a href="#extracting-additional-information">Extracting Additional Information</a></li>
+            <li><a href="#generating-comparative-results">Generating Comparative Results</a></li>
+          </ol>
+
+          <h2 id="system-requirements">System Requirements</h2>
+          <p>
+            The system needs a GPU to get a faster response from the models. The amount of VRAM required depends on the model that we want to run. Here is an estimate:
+          </p>
+          <ul>
+            <li>7B model requires ~4 GB</li>
+            <li>13B model requires ~8 GB</li>
+            <li>30B model needs ~16 GB</li>
+            <li>65B model needs ~32 GB</li>
+          </ul>
+
+          <h2 id="installation">Installation</h2>
+          <ol>
+            <li>Ensure Miniconda is installed</li>
+            <li>Create a conda environment with Python 3.12:<br><code>conda create -n pcl-fetcher python=3.10</code></li>
+            <li>Activate the conda environment:<br><code>conda activate myenv</code></li>
+            <li>Install all required packages:<br><code>pip install -r requirements.txt</code></li>
+            <li>Install Ollama:<br>Visit <a href="https://ollama.com/">https://ollama.com/</a> and follow the installation instructions.</li>
+            <li>Download the Ollama models you intend to use locally.</li>
+          </ol>
+
+          <h2 id="running-the-project">Running the Project</h2>
+          <ol>
+            <li>Place your annotated ground-truth dataset inside the <code>data</code> directory.</li>
+            <li>Rename the dataset as <code>ground-truth.csv</code> to maintain consistency.</li>
+            <li>Run the following command to derive responses from LLMs:<br>
+              <pre><code>python3 01_run_llm.py --model_name=MODEL-NAME --prompting_method=PROMPTING-METHOD --reports_to_process=-1</code></pre>
+              <strong>Command breakdown:</strong>
+              <ul>
+                <li><code>--model_name</code>: Name of the model to run (e.g., mixtral:8x7b-instruct-v0.1-q4_K_M)</li>
+                <li><code>--prompting_method</code>: Name of the prompting method. Two options available: 1) IP, stands for Instruction Prompting; 2) CoT, stands for Chain-of-Thought prompting.</li>
+                <li><code>--reports_to_process=-1</code>: Number of reports to process. By default = -1, processes all reports.</li>
+              </ul>
+              LLM responses will be stored in the <code>local_chat_history</code> directory.
+            </li>
+          </ol>
+
+          <h2 id="calculating-the-evaluation-metrics">Calculating the Evaluation Metrics</h2>
+          <ol>
+            <li>Open the <code>run_evaluation.py</code> file.</li>
+            <li>Update the value of the variable:<br>
+              <code>file_containing_ground_truth</code> – should point to ground truth data (e.g., <code>'data/PCL_p.csv'</code>).
+            </li>
+            <li>Run the following command in the shell:<br>
+              <pre><code>python3 run_evaluation.py --reports_to_process=-1</code></pre>
+              <strong>Command breakdown:</strong>
+              <ul>
+                <li><code>--reports_to_process=-1</code>: Number of reports to process. Default = -1 to process all reports.</li>
+              </ul>
+            </li>
+            <li>Results will be stored in the <code>results/all_models.csv</code> file.</li>
+          </ol>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+<section class="section" id="Docker">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">
+          <i class="fab fa-docker"></i> Docker Installation Manual
+        </h2>
+
+        <p class="has-text-justified">
+          Download the <code>Dockerfile</code> from the given <a href="https://github.com/OSS-PREY/OSSPREY-Website/blob/main/static/installation-files/Dockerfile" target="_blank">link</a>
+
+          Use the following commands to build and run the Docker container securely. Ensure that your environment variables and sensitive credentials are properly configured beforehand:
+        </p>
+        <div class="container is-max-desktop" style="text-align: left;">
+          <pre><code>sudo docker build --build-arg GITHUB_USERNAME="priyalsoni15" \
+        --build-arg GITHUB_PAT="$(cat ~/.github_pat)" \
+        --build-arg GITHUB_TOKEN_1="$(cat ~/.github_token1)" \
+        --build-arg GITHUB_TOKEN_2="$(cat ~/.github_token2)" \
+        --build-arg GITHUB_TOKEN_3="$(cat ~/.github_token3)" \
+        --build-arg GITHUB_TOKEN_4="$(cat ~/.github_token4)" \
+        --build-arg MONGODB_USER="priyalsoniwritings" \
+        --build-arg MONGODB_PASSWORD="$(cat ~/.mongodb_password)" \
+        -t my-secure-image .
+        docker run -d --env-file .env -p 5001:5000 my-secure-image
+          </code></pre>
+        </div>
+
+        <div class="notification is-warning has-text-left">
+          <strong>Note:</strong> This Dockerfile involves some manual steps and may require debugging:
+          <ul style="margin-left: 1em;">
+            <li>The automatic creation of a MongoDB user is not supported and must be done manually.</li>
+            <li>Environment files such as <code>.env</code> must be created manually to securely store sensitive credentials; they are not embedded in the Dockerfile for security reasons.</li>
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section" id="Docker">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered">
+          Acknowledgements
+        </h2>
+        <p>
+          This research was supported by the National Science Foundation under Grant No. 2020751, as well as by the Alfred P. Sloan Foundation through the OSPO for UC initiative (Award No. 2024-22424).
+        </p> 
+       
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="License">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered">
+          License
+        </h2>
+        <p>
+          The project is licensed under the Apache License 2.0. 
+          This permissive license allows you to use, modify, and distribute the software for both personal and commercial purposes, 
+          as long as you include proper attribution and comply with the terms outlined in the license.
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+<section class="section" id="Contributing">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered">
+          Contributing
+        </h2>
+        <p>
+          Contributions are very welcome! If you'd like to add features, fix bugs, or improve the documentation, please feel free to fork the repository and create a pull request. Make sure your changes are well-documented and follow the project's coding standards.
+        </p>
+        <p>
+          We appreciate your interest in improving this project—thank you for helping make it better!
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="Contact">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths has-text-left">
+        <h2 class="title is-3 has-text-centered">
+          Contact
+        </h2>
+        <p>
+          For high-level discussions, funding opportunities, or collaboration inquiries, please reach out to the project supervisor, 
+          <strong>Professor Vladimir Filkov</strong> 
+          (<a href="mailto:vfilkov@ucdavis.edu">vfilkov@ucdavis.edu</a>).
+        </p>
+        <p>
+          For technical questions, bug reports, or concerns regarding the codebase, please contact the main project maintainer, 
+          <strong>Nafiz Imtiaz Khan</strong> 
+          (<a href="mailto:nikhan@ucdavis.edu">nikhan@ucdavis.edu</a>).
+        </p>
+        <p>
+          We're excited to hear from you!
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- 
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{park2021nerfies,
+  author    = {},
+  title     = {},
+  journal   = {},
+  year      = {},
+}</code></pre>
+  </div>
+</section> -->
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      
+      <a class="icon-link" href="https://github.com/nafiz43" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p class="is-size-7 has-text-grey">
+            This front-end website is adapted from the 
+            <a href="https://nerfies.github.io/" target="_blank" rel="noopener noreferrer">Nerfies project</a> 
+            by Park et al., and is licensed under a 
+            <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">
+              Creative Commons Attribution-ShareAlike 4.0 International License
+            </a>. 
+            It has been significantly modified and extended to fit the needs of OSSPREY project.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

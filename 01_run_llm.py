@@ -140,7 +140,6 @@ def main(model_name, prompting_method, reports_to_process, temp):
                 ################### BEDROCK CONVERSE###################################
             elif(model_name=="meta.llama3-70b-instruct-v1:0"):
                 import boto3
-                import json
 
                 from botocore.exceptions import ClientError
 
