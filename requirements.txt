@@ -1,6 +1,7 @@
 langchain==0.3.25
-click
-pandas
-sklearn
-langchain_community
-langchain-ollama # for ollama
+click==8.1.8
+pandas==2.2.3
+scikit-learn==1.6.1
+langchain_community==0.3.23
+langchain-ollama==0.3.2 # for ollama
+boto3==1.38.12
