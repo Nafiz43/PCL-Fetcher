@@ -25,11 +25,11 @@
 
 # python3 01_run_llm.py --model_name=llama3.3:70b --prompting_method=IP --reports_to_process=-1 >> log-files/llama3.3_IP_temp0.txt
 
-# python3 01_run_llm.py --model_name=qwen2.5:70b --prompting_method=IP --reports_to_process=-1 >> log-files/qwen2.5_IP_temp0.txt
+# python3 01_run_llm.py --model_name=qwen2.5:72b --prompting_method=IP --reports_to_process=-1 >> log-files/qwen2.5_IP_temp0.txt
 
 # python3 01_run_llm.py --model_name=thewindmom/llama3-med42-8b:latest --prompting_method=IP --reports_to_process=-1 log-files/llama3med42_IP_temp0.txt
 
-# python3 01_run_llm.py --model_name=anthropic.claude-3-5-haiku-20241022-v1:0 --prompting_method=IP --reports_to_process=-1 >> log-files/claude_haiku_IP_temp0.txt
+python3 01_run_llm.py --model_name=anthropic.claude-3-5-haiku-20241022-v1:0 --prompting_method=IP --reports_to_process=-1 >> log-files/claude_haiku_IP_temp0.txt
 
 
 
@@ -122,6 +122,6 @@
 # python3 01_run_llm.py --model_name=llama3:8b --prompting_method=CoT --temp=1 --reports_to_process=-1 >> log-files/llama3:8b_CoT_temp1.txt
 
 
-python3 01_run_llm.py --model_name=thewindmom/llama3-med42-70b  --prompting_method=IP --reports_to_process=-1 log-files/llama3med4270B_IP_temp0.txt
+# python3 01_run_llm.py --model_name=thewindmom/llama3-med42-70b  --prompting_method=IP --reports_to_process=-1 log-files/llama3med4270B_IP_temp0.txt
 
-python3 01_run_llm.py --model_name=thewindmom/llama3-med42-70b --prompting_method=IP --reports_to_process=-1 log-files/llama3med4270B_IP_temp0.txt
+# python3 01_run_llm.py --model_name=thewindmom/llama3-med42-70b --prompting_method=IP --reports_to_process=-1 log-files/llama3med4270B_IP_temp0.txt

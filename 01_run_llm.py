@@ -17,7 +17,8 @@ from _constant_func import *
 
 
 # data = pd.read_csv('data/Labeled/labels_v2.csv')
-data = pd.read_csv('data/Labeled_Reports_2025_02_14_V02.csv')
+# data = pd.read_csv('data/Labeled_Reports_2025_02_14_V02.csv')
+data = pd.read_csv('data/Need_to_Process_May.csv')
 total_report_count = len(data)
 # data = data[346:]
 
@@ -106,7 +107,7 @@ def main(model_name, prompting_method, reports_to_process, temp):
                 import boto3
                 bedrock_client = boto3.client(service_name='bedrock-runtime', region_name="us-west-2")
 
-                ################### BEDROCK CONVERSE###################################
+                ################### BEDROCK CONVERSE################################### meta.llama3-70b-instruct-v1:0
                 system_prompts = [{"text": "System Prompt"}]
                 # model_id = "anthropic.claude-3-5-haiku-20241022-v1:0"
                 messages = [{
@@ -137,6 +138,52 @@ def main(model_name, prompting_method, reports_to_process, temp):
                 # print(res)
 
                 ################### BEDROCK CONVERSE###################################
+            elif(model_name=="meta.llama3-70b-instruct-v1:0"):
+                import boto3
+                import json
+
+                from botocore.exceptions import ClientError
+
+                # Create a Bedrock Runtime client in the AWS Region of your choice.
+                client = boto3.client("bedrock-runtime", region_name="us-west-2")
+
+                # Set the model ID, e.g., Llama 3 70b Instruct.
+                model_id = "meta.llama3-70b-instruct-v1:0"
+
+                # Define the prompt for the model.
+                prompt = "Describe the purpose of a 'hello world' program in one line."
+
+                # Embed the prompt in Llama 3's instruction format.
+                formatted_prompt = f"""
+                <|begin_of_text|><|start_header_id|>user<|end_header_id|>
+                {query}
+                <|eot_id|>
+                <|start_header_id|>assistant<|end_header_id|>
+                """
+
+                # Format the request payload using the model's native structure.
+                native_request = {
+                    "prompt": formatted_prompt,
+                    "temperature": 0,
+                }
+
+                # Convert the native request to JSON.
+                request = json.dumps(native_request)
+
+                try:
+                    # Invoke the model with the request.
+                    response = client.invoke_model(modelId=model_id, body=request)
+
+                except (ClientError, Exception) as e:
+                    print(f"ERROR: Can't invoke '{model_id}'. Reason: {e}")
+                    exit(1)
+
+                # Decode the response body.
+                model_response = json.loads(response["body"].read())
+
+                # Extract and print the response text.
+                response = model_response["generation"]
+                # print(response_text)
             else:
                 ollama = Ollama(model=model_name, temperature=temp)
                 logging.getLogger().setLevel(logging.ERROR)  

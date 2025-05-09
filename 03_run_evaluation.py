@@ -12,8 +12,9 @@ from sklearn.metrics import roc_curve
 from _constant_func import *
 
 
-file_containing_ground_truth = 'data/Labeled_Reports_2025_02_14_V02.csv'
+file_containing_ground_truth = 'data/Ground_Truth_2025_04_21.csv'
 local_history_directory = 'local_chat_history'
+
 os.makedirs(os.path.dirname("results/"), exist_ok=True) #making sure the directory exists
 
 
@@ -108,13 +109,13 @@ for csv_file in csv_files:
 
     # data = data.drop(columns=['Other'])
     # data = data.drop(columns=['Other.1'])
-    data = data.drop(columns=['Modality'])
-    data = data.drop(columns=['Exam Code'])
-    data = data.drop(columns=['Completed'])
-    data = data.drop(columns=['Exam Description'])
-    data = data.drop(columns=['Resident'])
-    data = data.drop(columns=['Completed REG'])
-    data = data.drop(columns=['Example Case List'])
+    data = data.drop(columns=['Modality'], errors='ignore')
+    data = data.drop(columns=['Exam Code'], errors='ignore')
+    data = data.drop(columns=['Completed'], errors='ignore')
+    data = data.drop(columns=['Exam Description'], errors='ignore')
+    data = data.drop(columns=['Resident'], errors='ignore')
+    data = data.drop(columns=['Completed REG'], errors='ignore')
+    data = data.drop(columns=['Example Case List'], errors='ignore')
     
     
     data.fillna(0, inplace=True)
@@ -150,15 +151,26 @@ for csv_file in csv_files:
         # print(row)
 
         ground_truth = row.iloc[2:].tolist()
-        # print("Accession Number", int(row.iloc[0]))
-        accession_numbers.append(int(row.iloc[0]))
+        accession_number = int(row.iloc[0])
+        accession_numbers.append(accession_number)
         # print("Ground Truth: ", index, ground_truth)
 
-        for i in range(total_num_of_questions*index, total_num_of_questions*(index+1)):
-            llm_response.append(int(llm_data.answer[k]))
-            actual_question.append(llm_data.question[k])
-            llm_reasoning.append(llm_data.reason[k]) #This compiles list of reasonings for a particular report
-            k=k+1
+        report_llm_data = llm_data[llm_data['accession_number'] == accession_number]
+        # print("Accession Number", accession_number, "Length of Report: ", len(report_llm_data))
+        # print(report_llm_data)
+
+        if (len(report_llm_data) < 39):
+            print("Invalid LLM data found for Accession Number: ", accession_number)
+            continue
+
+
+
+
+        for i in range(0, 39):
+            llm_response.append(int(report_llm_data.answer.iloc[i]))
+            actual_question.append(report_llm_data.question.iloc[i])
+            llm_reasoning.append(report_llm_data.reason.iloc[i]) #This compiles list of reasonings for a particular report
+            # k=k+1
         # print("LLM Response: ", llm_response)
         ground_truth = [int(num) for num in ground_truth]
         # print("Report: ", index+1)
@@ -298,4 +310,4 @@ for csv_file in csv_files:
     # print(metrics_df)
 
 all_models_results.to_csv('results/all_models.csv', index=False)
-print("All Models Result saved in: `all_models.csv` file")
+print("All Models Result saved in: `results/all_models.csv` file")

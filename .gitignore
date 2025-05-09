@@ -15,6 +15,7 @@ Miniconda3-latest-Linux-x86_64.sh
 /paper-tables/
 /logs/
 /log-files/
+/test/
 temp.txt
 abc.txt
 # test.ipynb

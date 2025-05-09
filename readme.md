@@ -18,6 +18,17 @@ The system needs a GPU to get a faster response from the models. The amount of V
 
 ## Installation
 
+1. Ensure Miniconda is installed
+
+2. Create a conda enviroment with python 3.10:
+
+conda create -n pcl-fetcher python=3.10
+
+3. Activate the conda enviroment
+
+conda activate myenv
+
+
 1. Install all required packages and dependencies:
    ```
    pip install -r requirements.txt

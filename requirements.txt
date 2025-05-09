@@ -1,5 +1,6 @@
-langchain
+langchain==0.3.25
 click
 pandas
+sklearn
 langchain_community
 langchain-ollama # for ollama
