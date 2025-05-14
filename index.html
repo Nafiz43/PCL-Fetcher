@@ -6,7 +6,7 @@
         content="Intelligent Documentation in Medical Education: Can AI Replace Manual Case Logging?">
   <meta name="keywords" content="OSS">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>OSSPREY
+  <title>PCL-Fetcher
   </title>
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
@@ -19,15 +19,14 @@
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/favicon.ico">
+  <link rel="icon" href="static/images/icon.png">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
-  <script data-goatcounter="https://ossprey-web-analytics.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
+
 
 <style>
   ol li {
@@ -94,7 +93,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <img src="static/images/documentation_burden.png" alt="OSSPREY System Architecture" style="height: 35%; width: 45%;">
+          <img src="static/images/documentation_burden.png" alt="" style="height: 35%; width: 45%;">
           <h1 class="title is-1 publication-title">Intelligent Documentation in Medical Education: Can AI Replace Manual Case Logging?</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
@@ -231,7 +230,8 @@
         <div class="content has-text-justified">
           <p>
             Accurate documentation of procedural case logs is a critical component of radiology training, serving as the basis for competency assessment, credentialing, and regulatory compliance. However, current case logging workflows rely heavily on manual annotation by trainees—an error-prone and time-consuming process that imposes significant administrative burden and detracts from clinical learning. Traditional approaches, such as the crosswalk method that maps structured metadata to procedure labels, often fail to capture procedures documented only in free-text, resulting in incomplete logs and underreporting.
-
+          </p>
+          <p
             In this study, we explore the feasibility of automating procedural case log generation using large language models (LLMs). We evaluate two state-of-the-art LLMs— <code>Qwen-2.5</code> (a local, open-source model) and <code>Claude-3.5-Haiku</code> (a commercial API model)—under two prompting strategies: Instruction Prompting and Chain-of-Thought reasoning. Across 39 radiological procedures, both models substantially outperform the crosswalk benchmark in terms of sensitivity and F1-score, while maintaining high specificity. Error analysis reveals that model performance varies by procedure complexity and linguistic ambiguity. Additionally, we quantify the cost of inference in terms of latency and token generation, and demonstrate that LLM-based solutions could save over 30-40 hours of manual annotation time per resident annually. Our findings suggest that LLMs offer a scalable, cost-effective, and high-fidelity alternative to manual case logging, paving the way for intelligent documentation systems that support medical education while reducing clerical workload.
             </p>
 
@@ -371,6 +371,122 @@ Your response must be a valid JSON object with the following keys:
 </section>
 
 
+ <section class="section" id="results">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Results</h2>
+        <div class="content has-text-justified">
+
+          <table border="1">
+  <caption>Performance Comparison of Models Across Modalities</caption>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Model</th>
+      <th>Prompting Method</th>
+      <th>Modality</th>
+      <th>TP</th>
+      <th>TN</th>
+      <th>FP</th>
+      <th>FN</th>
+      <th>Sensitivity</th>
+      <th>Specificity</th>
+      <th>F1Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="4">Benchmark</td>
+      <td rowspan="4">Cross-Walk</td>
+      <td rowspan="4">NA</td>
+      <td>All</td>
+      <td>451</td><td>15364</td><td>93</td><td>238</td><td>65.46</td><td>99.40</td><td><strong>73.15</strong></td>
+    </tr>
+    <tr>
+      <td>VascularDiagonsis</td><td>143</td><td>3065</td><td>23</td><td>81</td><td>63.84</td><td>99.26</td><td>73.33</td>
+    </tr>
+    <tr>
+      <td>VascularIntervention</td><td>157</td><td>5906</td><td>38</td><td>109</td><td>59.02</td><td>99.36</td><td>68.11</td>
+    </tr>
+    <tr>
+      <td>NonVascularIntervention</td><td>151</td><td>6393</td><td>32</td><td>48</td><td>75.88</td><td>99.50</td><td>79.06</td>
+    </tr>
+
+    <tr>
+      <td rowspan="8">Local</td>
+      <td rowspan="8">Qwen-2.5:72B</td>
+      <td rowspan="4">IP</td>
+      <td>All</td><td>649</td><td>15174</td><td>283</td><td>40</td><td>94.19</td><td>98.17</td><td><strong>80.08</strong></td>
+    </tr>
+    <tr>
+      <td>VascularDiagnosis</td><td>219</td><td>3068</td><td>20</td><td>5</td><td>97.77</td><td>99.35</td><td>94.60</td>
+    </tr>
+    <tr>
+      <td>VascularIntervention</td><td>247</td><td>5803</td><td>141</td><td>19</td><td>92.86</td><td>97.63</td><td>75.54</td>
+    </tr>
+    <tr>
+      <td>NonVascularIntervention</td><td>183</td><td>6303</td><td>122</td><td>16</td><td>91.96</td><td>98.10</td><td>72.62</td>
+    </tr>
+
+    <tr>
+      <td rowspan="4">CoT</td>
+      <td>All</td><td>628</td><td>15217</td><td>240</td><td>61</td><td>91.15</td><td>98.45</td><td><strong>80.67</strong></td>
+    </tr>
+    <tr>
+      <td>VascularDiagnosis</td><td>208</td><td>3063</td><td>25</td><td>16</td><td>92.86</td><td>99.19</td><td>91.03</td>
+    </tr>
+    <tr>
+      <td>VascularIntervention</td><td>244</td><td>5824</td><td>120</td><td>22</td><td>91.73</td><td>97.98</td><td>77.46</td>
+    </tr>
+    <tr>
+      <td>NonVascularIntervention</td><td>176</td><td>6330</td><td>95</td><td>23</td><td>88.44</td><td>98.52</td><td>74.89</td>
+    </tr>
+
+    <tr>
+      <td rowspan="8">Commercial</td>
+      <td rowspan="8">Claude-3.5-Haiku</td>
+      <td rowspan="4">IP</td>
+      <td>All</td><td>633</td><td>14961</td><td>496</td><td>56</td><td>91.87</td><td>96.79</td><td><strong>69.64</strong></td>
+    </tr>
+    <tr>
+      <td>VascularDiagnosis</td><td>215</td><td>3067</td><td>21</td><td>9</td><td>95.98</td><td>99.32</td><td>93.48</td>
+    </tr>
+    <tr>
+      <td>VascularIntervention</td><td>230</td><td>5737</td><td>207</td><td>36</td><td>86.47</td><td>96.52</td><td>65.43</td>
+    </tr>
+    <tr>
+      <td>NonVascularIntervention</td><td>188</td><td>6157</td><td>268</td><td>11</td><td>94.47</td><td>95.83</td><td>57.41</td>
+    </tr>
+
+    <tr>
+      <td rowspan="4">CoT</td>
+      <td>All</td><td>613</td><td>15348</td><td>109</td><td>76</td><td>88.97</td><td>99.29</td><td><strong>86.89</strong></td>
+    </tr>
+    <tr>
+      <td>VascularDiagnosis</td><td>210</td><td>3069</td><td>19</td><td>14</td><td>93.75</td><td>99.38</td><td>92.71</td>
+    </tr>
+    <tr>
+      <td>VascularIntervention</td><td>228</td><td>5905</td><td>39</td><td>38</td><td>85.71</td><td>99.34</td><td>85.55</td>
+    </tr>
+    <tr>
+      <td>NonVascularIntervention</td><td>175</td><td>6374</td><td>51</td><td>24</td><td>87.94</td><td>99.21</td><td>82.35</td>
+    </tr>
+  </tbody>
+</table>
+          <p>
+            The table above summarizes the performance of different models across various modalities. The results indicate that both local and commercial LLMs significantly outperform the benchmark crosswalk method, particularly in terms of sensitivity and F1-score. The choice of prompting strategy also plays a crucial role in model performance, with Chain-of-Thought prompting generally yielding better results.
+          </p>
+
+          <p>
+            For a more detailed analysis, including error types and model-specific insights, please refer to the full paper.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section> 
 
 <section class="section" id="Installation">
   <div class="container is-max-desktop">
@@ -517,63 +633,8 @@ Your response must be a valid JSON object with the following keys:
 </section>
 
 
- <!-- <section class="section" id="System-Docker">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Installation Manual</h2>
-        <div class="content has-text-justified">
 
-        </div>
-      </div>
-    </div>
-  </div>
-</section>  -->
-
-
-<!-- <section class="section" id="Docker">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">
-          <i class="fab fa-docker"></i> Docker Installation Manual
-        </h2>
-
-        <p class="has-text-justified">
-          Download the <code>Dockerfile</code> from the given <a href="https://github.com/OSS-PREY/OSSPREY-Website/blob/main/static/installation-files/Dockerfile" target="_blank">link</a>
-
-          Use the following commands to build and run the Docker container securely. Ensure that your environment variables and sensitive credentials are properly configured beforehand:
-        </p>
-        <div class="container is-max-desktop" style="text-align: left;">
-          <pre><code>sudo docker build --build-arg GITHUB_USERNAME="priyalsoni15" \
-        --build-arg GITHUB_PAT="$(cat ~/.github_pat)" \
-        --build-arg GITHUB_TOKEN_1="$(cat ~/.github_token1)" \
-        --build-arg GITHUB_TOKEN_2="$(cat ~/.github_token2)" \
-        --build-arg GITHUB_TOKEN_3="$(cat ~/.github_token3)" \
-        --build-arg GITHUB_TOKEN_4="$(cat ~/.github_token4)" \
-        --build-arg MONGODB_USER="priyalsoniwritings" \
-        --build-arg MONGODB_PASSWORD="$(cat ~/.mongodb_password)" \
-        -t my-secure-image .
-        docker run -d --env-file .env -p 5001:5000 my-secure-image
-          </code></pre>
-        </div>
-
-        <div class="notification is-warning has-text-left">
-          <strong>Note:</strong> This Dockerfile involves some manual steps and may require debugging:
-          <ul style="margin-left: 1em;">
-            <li>The automatic creation of a MongoDB user is not supported and must be done manually.</li>
-            <li>Environment files such as <code>.env</code> must be created manually to securely store sensitive credentials; they are not embedded in the Dockerfile for security reasons.</li>
-          </ul>
-        </div>
-        
-      </div>
-    </div>
-  </div>
-</section> -->
-
-
-
-<section class="section" id="Docker">
+<section class="section" id="acknowledgements">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
@@ -687,7 +748,7 @@ Your response must be a valid JSON object with the following keys:
             <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">
               Creative Commons Attribution-ShareAlike 4.0 International License
             </a>. 
-            It has been significantly modified and extended to fit the needs of OSSPREY project.
+            It has been significantly modified and extended to fit the needs of PCL-Fetcher project.
           </p>
         </div>
       </div>

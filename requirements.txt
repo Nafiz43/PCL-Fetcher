@@ -5,3 +5,5 @@ scikit-learn==1.6.1
 langchain_community==0.3.23
 langchain-ollama==0.3.2 # for ollama
 boto3==1.38.12
+matplotlib==3.10.3
+tiktoken==0.9.0

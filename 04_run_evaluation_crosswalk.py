@@ -10,7 +10,7 @@ from _constant_func import calculate_metrics, get_dataframes, calculate_metrics_
 
 
 crosswalk = pd.read_csv('data/cross_walk.csv')
-original_report = pd.read_csv('data/Labeled_Reports_2025_02_14_V02.csv')
+original_report = pd.read_csv('data/Ground_Truth_2025_04_21.csv')
 
 reports_to_process = -1
     # Parse arguments manually
