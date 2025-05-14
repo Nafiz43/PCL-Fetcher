@@ -6,11 +6,11 @@ import pandas as pd
 import numpy as np
 
 
-df = pd.read_csv('data/Labeled_Reports_2025_02_14_V02.csv')
+df = pd.read_csv('data/Ground_Truth_2025_04_21.csv')
 df= df.fillna(0)
 
 df.drop(['Accession Number', 'Modality', 'Exam Code', 'Completed',
-       'Completed REG', 'Example Case List', 'Exam Description', 'Report Text', 'Resident'], axis=1, inplace=True)
+       'Completed REG', 'Example Case List', 'Exam Description', 'Report Text', 'Resident'], axis=1, inplace=True, errors='ignore')
 
 distribution_count = []
 for i in range(0, 40):

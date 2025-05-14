@@ -2,7 +2,7 @@
 Developed at DECAL Lab in CS Department @ UC Davis by Nafiz Imtiaz Khan (nikhan@ucdavis.edu)
 Copyright © 2025 The Regents of the University of California, Davis campus. All Rights Reserved. Used with permission.
 """
-# This script collects question numbers from FN and FP files and generates annotated bar plots
+# This script collects the question numbers from the evaluation results of different models and generates a LaTeX table summarizing the false positive (FP) and false negative (FN) counts for each question number across different models.
 
 import re
 import numpy as np

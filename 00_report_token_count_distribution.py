@@ -2,6 +2,12 @@
 Developed at DECAL Lab in CS Department @ UC Davis by Nafiz Imtiaz Khan (nikhan@ucdavis.edu)
 Copyright © 2025 The Regents of the University of California, Davis campus. All Rights Reserved. Used with permission.
 """
+
+# This script generates histograms and KDE plots for the token counts of radiology reports, both raw and cleaned.
+# It uses the Gaussian KDE method to create a smooth curve representing the distribution of token counts.
+# The histograms and KDE plots are saved as PNG files in the 'figs' directory.
+# The script also includes functions to clean the radiology reports and count the tokens in the reports.
+
 import pandas as pd
 import numpy as np
 import os
@@ -15,7 +21,8 @@ from scipy.stats import gaussian_kde
 
 
 
-df = pd.read_csv('data/Labeled_Reports_2025_02_14_V02.csv')
+
+df = pd.read_csv('data/Ground_Truth_2025_04_21.csv')
 
 token_counts_raw = pd.array(df['Report Text'].apply(lambda x: count_tokens(x) if pd.notnull(x) else 0))
 token_counts_cleaned = pd.array(df['Report Text'].apply(lambda x: clean_radiology_report(x)).apply(lambda x: count_tokens(x) if pd.notnull(x) else 0))
