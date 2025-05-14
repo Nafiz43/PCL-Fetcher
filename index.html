@@ -21,6 +21,8 @@
   <link rel="stylesheet" href="./static/css/index.css">
   <link rel="icon" href="static/images/icon.png">
 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
@@ -31,7 +33,27 @@
 <style>
   ol li {
   margin-bottom: 1em; 
+  
 }
+
+  a {
+    text-decoration: none;
+  }
+
+  body {
+    font-size: 18px;
+  }
+
+  table.custom-border {
+    /* border-collapse: collapse;
+    width: 100%; */
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+  }
+  /* table.custom-border td, table.custom-border th {
+    border: none;
+  } */
+
 </style>
 </head>
 <body>
@@ -93,27 +115,29 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <img src="static/images/documentation_burden.png" alt="" style="height: 35%; width: 45%;">
+          <img src="static/images/documentation_burden.png" alt="" style="height: 42%; width: 45%;">
           <h1 class="title is-1 publication-title">Intelligent Documentation in Medical Education: Can AI Replace Manual Case Logging?</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="https://nafiz43.github.io/portfolio/">Nafiz Imtiaz Khan</a>,</span>
+              <a href="https://nafiz43.github.io/portfolio/">Nafiz Imtiaz Khan<sup>1</sup></a>, </span>
             <span class="author-block">
-              <a href="https://www.cs.ucdavis.edu/~filkov/" target="_blank">Vladimir Filkov</a>,
+              <a href="https://www.cs.ucdavis.edu/~filkov/" target="_blank">Vladimir Filkov<sup>1</sup></a>, 
 
             </span>
             <span class="author-block">
-              <a href="" target="_blank">Kylie Cleland</a>,
+              <a href="" target="_blank">Kylie Cleland<sup>2</sup></a>, 
             </span>
 
             <span class="author-block">
-              <a href="https://health.ucdavis.edu/vascular/team/42868/roger-goldman-vascular-and-interventional-radiology-sacramento" target="_blank">Roger Eric Goldman</a>
+              <a href="https://health.ucdavis.edu/vascular/team/42868/roger-goldman-vascular-and-interventional-radiology-sacramento" target="_blank">Roger Eric Goldman<sup>2</sup></a> 
             </span>
            
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block">Department of Computer Science, University of California, Davis</span>
+            <sup>1</sup> <span class="author-block">Department of Computer Science, University of California, Davis, CA, US</span> <br>
+            <sup>2</sup> <span class="author-block">Department of Radiology, University of California, Davis, CA, US</span>
+
           </div>
 
           <div class="column has-text-centered">
@@ -231,9 +255,9 @@
           <p>
             Accurate documentation of procedural case logs is a critical component of radiology training, serving as the basis for competency assessment, credentialing, and regulatory compliance. However, current case logging workflows rely heavily on manual annotation by trainees—an error-prone and time-consuming process that imposes significant administrative burden and detracts from clinical learning. Traditional approaches, such as the crosswalk method that maps structured metadata to procedure labels, often fail to capture procedures documented only in free-text, resulting in incomplete logs and underreporting.
           </p>
-          <p
-            In this study, we explore the feasibility of automating procedural case log generation using large language models (LLMs). We evaluate two state-of-the-art LLMs— <code>Qwen-2.5</code> (a local, open-source model) and <code>Claude-3.5-Haiku</code> (a commercial API model)—under two prompting strategies: Instruction Prompting and Chain-of-Thought reasoning. Across 39 radiological procedures, both models substantially outperform the crosswalk benchmark in terms of sensitivity and F1-score, while maintaining high specificity. Error analysis reveals that model performance varies by procedure complexity and linguistic ambiguity. Additionally, we quantify the cost of inference in terms of latency and token generation, and demonstrate that LLM-based solutions could save over 30-40 hours of manual annotation time per resident annually. Our findings suggest that LLMs offer a scalable, cost-effective, and high-fidelity alternative to manual case logging, paving the way for intelligent documentation systems that support medical education while reducing clerical workload.
-            </p>
+          <p>
+            In this study, we explore the feasibility of automating procedural case log generation using large language models (LLMs). We evaluate two state-of-the-art LLMs <code> Qwen-2.5</code> (a local, open-source model) and <code>Claude-3.5-Haiku</code> (a commercial API model)—under two prompting strategies: Instruction Prompting and Chain-of-Thought reasoning. Across 39 radiological procedures, both models substantially outperform the crosswalk benchmark in terms of sensitivity and F1-score, while maintaining high specificity. Error analysis reveals that model performance varies by procedure complexity and linguistic ambiguity. Additionally, we quantify the cost of inference in terms of latency and token generation, and demonstrate that LLM-based solutions could save over 30-40 hours of manual annotation time per resident annually. Our findings suggest that LLMs offer a scalable, cost-effective, and high-fidelity alternative to manual case logging, paving the way for intelligent documentation systems that support medical education while reducing clerical workload.
+          </p>
 
            <!-- <p>To learn more about OSSPREY, visit our live link at <a href="https://ossprey.netlify.app" target="_blank">ossprey.netlify.app</a>.
          -->
@@ -378,7 +402,7 @@ Your response must be a valid JSON object with the following keys:
         <h2 class="title is-3">Results</h2>
         <div class="content has-text-justified">
 
-          <table border="1">
+          <table  class="custom-border table table-striped table-hover">
   <caption>Performance Comparison of Models Across Modalities</caption>
   <thead>
     <tr>
@@ -495,17 +519,6 @@ Your response must be a valid JSON object with the following keys:
         <h2 class="title is-3">Installation Manual</h2>
         <div class="content has-text-justified">
 
-          <h1>Procedural Case Log Project</h1>
-          <p>This README provides instructions for setting up and running the Procedural Case Log project.</p>
-
-          <h2>Table of Contents</h2>
-          <ol>
-            <li><a href="#system-requirements">System Requirements</a></li>
-            <li><a href="#installation">Installation</a></li>
-            <li><a href="#running-the-project">Running the Project</a></li>
-            <li><a href="#extracting-additional-information">Extracting Additional Information</a></li>
-            <li><a href="#generating-comparative-results">Generating Comparative Results</a></li>
-          </ol>
 
           <h2 id="system-requirements">System Requirements</h2>
           <p>
