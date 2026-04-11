@@ -31,6 +31,30 @@
 
 
 <style>
+  :root {
+    --page-bg: #ffffff;
+    --page-text: #1f1f1f;
+    --muted-text: #5c5c5c;
+    --card-bg: #ffffff;
+    --button-bg: #2f2f2f;
+    --button-text: #ffffff;
+    --button-border: #2f2f2f;
+    --toggle-bg: #f0f0f0;
+    --toggle-text: #202020;
+  }
+
+  body.dark-mode {
+    --page-bg: #121212;
+    --page-text: #efefef;
+    --muted-text: #c4c4c4;
+    --card-bg: #1b1b1b;
+    --button-bg: #efefef;
+    --button-text: #1f1f1f;
+    --button-border: #efefef;
+    --toggle-bg: #2a2a2a;
+    --toggle-text: #efefef;
+  }
+
   ol li {
   margin-bottom: 1em; 
   
@@ -42,6 +66,9 @@
 
   body {
     font-size: 18px;
+    background-color: var(--page-bg);
+    color: var(--page-text);
+    transition: background-color 0.25s ease, color 0.25s ease;
   }
 
   table.custom-border {
@@ -53,6 +80,67 @@
   /* table.custom-border td, table.custom-border th {
     border: none;
   } */
+  .title,
+  .subtitle,
+  .content,
+  .publication-title,
+  .publication-authors,
+  .section,
+  .hero,
+  p,
+  li,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    color: var(--page-text) !important;
+  }
+
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: var(--page-bg) !important;
+    border-bottom: 1px solid rgba(120, 120, 120, 0.2);
+  }
+
+  .navbar-item,
+  .navbar-link {
+    color: var(--page-text) !important;
+  }
+
+  .theme-toggle-btn {
+    border: 1px solid rgba(120, 120, 120, 0.5);
+    border-radius: 999px;
+    background-color: var(--toggle-bg);
+    color: var(--toggle-text);
+    padding: 0.45rem 0.9rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin-left: 0.5rem;
+  }
+
+  .sticky-links {
+    position: sticky;
+    top: 68px;
+    z-index: 900;
+    background-color: color-mix(in srgb, var(--page-bg) 92%, transparent);
+    backdrop-filter: blur(5px);
+    padding: 0.6rem 0.25rem;
+    border-radius: 14px;
+  }
+
+  .publication-links .button.is-dark {
+    background-color: var(--button-bg) !important;
+    color: var(--button-text) !important;
+    border-color: var(--button-border) !important;
+  }
+
+  .hero,
+  .section {
+    background-color: var(--page-bg) !important;
+  }
 
 </style>
 </head>
@@ -104,6 +192,9 @@
           </a> -->
         </div>
       </div>
+      <button id="themeToggle" class="theme-toggle-btn" type="button" aria-label="Toggle dark mode">
+        🌙 Dark mode
+      </button>
     </div>
 
   </div>
@@ -141,7 +232,7 @@
           </div>
 
           <div class="column has-text-centered">
-            <div class="publication-links">
+            <div class="publication-links sticky-links">
               <!-- PDF Link. -->
               <!-- <span class="link-block">
                 <a href="https://arxiv.org/pdf/2011.12948"
@@ -163,7 +254,7 @@
               </span> -->
               <!-- Live Link. -->
               <span class="link-block">
-                <a href="https://drive.google.com/file/d/1Jy0-V-84rJn07zEMCqw0YxO2zHxhOxmi/view?usp=drive_link" target="_blank"
+                <a href="https://arxiv.org/abs/2601.12648" target="_blank"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                     <i class="fas fa-file-alt"></i>
@@ -174,7 +265,7 @@
 
 
               <span class="link-block">
-                <a href="#methodology" target="_blank"
+                <a href="#methodology"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                     <i class="fas fa-cogs"></i>
@@ -185,7 +276,7 @@
 
 
               <span class="link-block">
-                <a href="#results" target="_blank"
+                <a href="#results"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                     <i class="fas fa-chart-line	"></i>
@@ -216,7 +307,7 @@
             </span> -->
               <!-- Installation Manual. -->
             <span class="link-block">
-              <a href="#Installation" target="_blank"
+              <a href="#Installation"
                  class="external-link button is-normal is-rounded is-dark">
                 <span class="icon">
                     <i class="fas fa-tools"></i>
@@ -226,7 +317,7 @@
           </span>
 
           <span class="link-block">
-            <a href="#Docker" target="_blank"
+            <a href="#Docker"
                class="external-link button is-normal is-rounded is-dark">
               <span class="icon">
                 <i class="fab fa-docker"></i>
@@ -243,6 +334,33 @@
     </div>
   </div>
 </section>
+
+<script>
+  (function() {
+    const themeToggle = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initialDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+
+    if (initialDark) {
+      document.body.classList.add('dark-mode');
+    }
+
+    const updateToggleLabel = () => {
+      const isDark = document.body.classList.contains('dark-mode');
+      themeToggle.textContent = isDark ? '☀️ Light mode' : '🌙 Dark mode';
+    };
+
+    updateToggleLabel();
+
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      updateToggleLabel();
+    });
+  })();
+</script>
 
 
 <section class="section">
