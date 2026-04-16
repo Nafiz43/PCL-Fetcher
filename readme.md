@@ -295,7 +295,7 @@ Recommended workflow:
 
 ## 15) Contact
 
-For questions, contact: **nikhan@ucdavis.edu**
+For questions, contact: Nafiz Imtiaz Khan **nikhan@ucdavis.edu**
 
 ---
 
