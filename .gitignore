@@ -16,6 +16,16 @@ Miniconda3-latest-Linux-x86_64.sh
 /logs/
 /log-files/
 /test/
+/code/local_chat_history/
+/code/old_chat_history/
+/code/discarded_chat_history/
+/code/local_chat_history_test/
+/code/__pycache__/
+/code/results/
+/code/d_results/
+/code/paper-tables/
+/code/logs/
+/code/log-files/
 temp.txt
 abc.txt
 # test.ipynb
